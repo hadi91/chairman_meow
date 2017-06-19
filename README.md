@@ -1,24 +1,66 @@
-# README
+# Chairman Meow
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This app is an online store that sells cats. Visitors to the store can browse the different breeds that are available and even add them to a shopping cart but cannot check out their orders until they have registered for an account. All cats are sold by the site administrator and it is not a p2p marketplace.
 
-Things you may want to cover:
+## Getting Started
 
-* Ruby version
+1. Get the codebase
 
-* System dependencies
+  ```bash
+  https://github.com/hadi91/chairman_meow.git
+  ```
 
-* Configuration
+2.Install gem dependencies
 
-* Database creation
+  ```bash
+  cd chairman_meow
+  bundle install
+  ```
 
-* Database initialization
+3. Setup Database
 
-* How to run the test suite
+  ```bash
+  rake db:create db:migrate
+  ```
 
-* Services (job queues, cache servers, search engines, etc.)
+4. Start the application
 
-* Deployment instructions
+  ```bash
+  # Start the web server
+  rails server
+  ```
 
-* ...
+## Testing
+
+We use [Rspec](https://github.com/rspec/rspec-rails) as our testing framework. So, during development, run these regularly.
+We use [Shoulda Matchers] as well 'https://github.com/thoughtbot/shoulda-matchers'.
+
+```bash
+# Run the specs
+rspec
+```
+
+## Branch Policy
+
+We follow the [Github Flow](https://guides.github.com/introduction/flow/) when developing the application, and name our branches as follow:
+
+- `master` is the active development branch
+
+Local development branch naming:
+
+- `feature/<your-branch-name>` for substantial new feature or function
+- `enhance/<your-branch-name>` for minor feature or function enhancement
+- `bugfix/<your-branch-name>` for bug fixes
+
+## Deployment
+
+We deploy our application to heroku.. Automatic deployment has been setup for our production environment as documented [here](https://devcenter.heroku.com/articles/github-integration#automatic-deploys). To manually deploy to heroku with Git, you need to:
+
+1. Register a heroku account and request access to production app
+2. Install [heroku toolbelt](https://toolbelt.heroku.com/) which is a CLI tool for creating and managing Heroku apps
+3. Setup heroku remote
+
+  ```bash
+  # Setup heroku remote for production
+  git remote add heroku https://git.heroku.com/chairman-meow.git
+  ```
