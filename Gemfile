@@ -78,3 +78,5 @@ gem 'simple_form'
 gem 'jquery-rails'
 # Official Sass port of Bootstrap 2 and 3.
 gem 'bootstrap-sass'
+# library for generating fake data
+gem 'faker'

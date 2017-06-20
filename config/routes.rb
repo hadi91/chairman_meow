@@ -13,9 +13,8 @@ Rails.application.routes.draw do
 #
   # namespace :admin do
   # resources :orders, except: [:new, :create, :destroy]
-  # resources :products
+  resources :products
   # end
 #
-  # root "products#index"
-
+  root "products#index"
 end

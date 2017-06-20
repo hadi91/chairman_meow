@@ -1,0 +1,20 @@
+<%= form_for @product do |f| %>
+<%= f.label :breed %>
+<%= f.text_field :breed %>
+<br>
+<%= f.label "Date of Birth" %>
+<%= f.datetime_field :dob %>
+<br>
+<%= f.label :description %>
+<%= f.text_area :description %>
+<br>
+<%= f.label :price %>
+<%= f.text_field :price %>
+<br>
+<%= f.label :quantity %>
+<%= f.select :quantity, [1,2,3,4,5] %>
+<br>
+<%= f.submit %>
+<% end %>
+
+<%= link_to "Cancel", root_path %>
