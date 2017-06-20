@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :users
   # resources :products, only: [:index, :show]
   # resource :cart, except: [:new, :create]
 #
@@ -15,5 +16,4 @@ Rails.application.routes.draw do
   # end
 #
   root "products#index"
-
 end
