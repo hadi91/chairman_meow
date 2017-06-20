@@ -19,9 +19,9 @@ ActiveRecord::Schema.define(version: 20170619151224) do
     t.string "breed", null: false
     t.date "dob", null: false
     t.text "description", null: false
-    t.string "price", null: false
-    t.integer "gender"
-    t.integer "quantity"
+    t.float "price", null: false
+    t.integer "gender", null: false
+    t.integer "quantity", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

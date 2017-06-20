@@ -3,7 +3,7 @@ FactoryGirl.define do
     breed "MyString"
     dob "2017-06-19"
     description "MyText"
-    price "MyString"
+    price "1.1"
     gender 1
     quantity 1
   end
