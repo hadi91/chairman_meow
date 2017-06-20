@@ -29,7 +29,7 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-#Use omniauth-facebook for fb log in feature
+# Use omniauth-facebook for fb log in feature
 gem 'omniauth-facebook'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -78,5 +78,3 @@ gem 'simple_form'
 gem 'jquery-rails'
 # Official Sass port of Bootstrap 2 and 3.
 gem 'bootstrap-sass'
-# library for generating fake data
-gem 'faker'
