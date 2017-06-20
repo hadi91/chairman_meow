@@ -31,7 +31,7 @@ class User < ApplicationRecord
         user.provider = "facebook"
         user.uid = data["id"] if user.uid.blank?
         user.email = data["email"] if user.email.blank?
-        user.firstname = data["name"] if user.name.blank?
+        user.firstname = data["name"] if user.firstname.blank?
       end
     end
   end
