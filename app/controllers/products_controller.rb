@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   def index
+    byebug
     @products = Product.all
   end
 
