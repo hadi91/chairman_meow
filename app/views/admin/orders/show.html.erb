@@ -1,0 +1,4 @@
+<p>Order No.<%= @order.id %></p>
+<p>Your order has <%= @order.line_items.count %> items </p>
+
+<%= link_to "Edit this order", edit_admin_order_path %>

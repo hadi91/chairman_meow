@@ -14,7 +14,7 @@ class Admin::OrdersController < ApplicationController
       redirect_to
     else
       render 'Edit'
-    end 
+    end
   end
 
   def show
