@@ -15,4 +15,15 @@ RSpec.describe Meow::ProductsController, type: :controller do
 
   end
 
+  describe 'GET #show' do
+
+    let(:product) { create(:product) }
+
+    before { get :show, params: { id: product } }
+
+    it { expect(assigns(:product)).to eq(product) }
+    it { expect(assigns(:line_item)).to be_a_new_record }
+
+  end
+
 end
