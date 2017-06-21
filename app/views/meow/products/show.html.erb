@@ -1,7 +1,14 @@
-<h1>A product</h1>
+<h1>Breed: <%= @product.breed %> (<%= @product.gender.capitalize %>) </h1>
 
-<%= @product.breed %>
-<%= @product.dob %>
-<%= @product.description %>
-<%= @product.price %>
-<%= @product.quantity %>
+Birthdate: <%= @product.dob %> <br>
+Description: <%= @product.description %> <br>
+Price: <%= @product.price %> <br>
+Gender: <%= @product.gender.capitalize %> <br>
+Quantity available: <%= @product.quantity %>
+
+<h2>Add breed to cart</h2>
+
+<%= simple_form_for @line_item, url: meow_line_item_path(product_id: @product), method: :post do |f| %>
+  <%= f.input :quantity, collection: 1..@product.quantity %>
+  <%= f.submit %>
+<% end %>
