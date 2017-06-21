@@ -1,10 +1,14 @@
 FactoryGirl.define do
   factory :product do
-    breed "MyString"
-    dob "2017-06-19"
-    description "MyText"
-    price "1.1"
+    breed "breed1"
+    dob "2017-01-01"
+    description "description1"
+    price 450.99
     gender 1
     quantity 1
+
+    trait :invalid do
+      breed nil
+    end
   end
 end
