@@ -1,6 +1,7 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+
+  after_create :create_shopping_cart
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
 
@@ -34,6 +35,12 @@ class User < ApplicationRecord
         user.firstname = data["name"] if user.firstname.blank?
       end
     end
+  end
+
+  private
+
+  def create_shopping_cart
+    ShoppingCart.create(user: self)
   end
 
 end
