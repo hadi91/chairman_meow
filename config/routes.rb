@@ -7,9 +7,9 @@ Rails.application.routes.draw do
   #resource :shopping_cart, except: [:new, :create]
 
   namespace :meow do
-    resources :orders, except: [:edit, :update]
+    #resources :orders, except: [:edit, :update]
     resources :products, only: [:index, :show]
-    resource :shopping_cart, except: [:new, :create]
+    #resource :shopping_cart, except: [:new, :create]
   end
 
   namespace :admin do
