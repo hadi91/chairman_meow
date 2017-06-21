@@ -5,6 +5,7 @@ FactoryGirl.define do
     firstname "Bob"
     lastname "Martin"
     telephone_number "81282382"
+    password '123123123'
     address "Blk 123 Tanjong Pagar Rd #12-123 Singapore 123456"
 
     trait :invalid do
