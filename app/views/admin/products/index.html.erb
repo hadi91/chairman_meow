@@ -1,0 +1,20 @@
+<h1>Home Page</h1>
+
+<%= link_to "Create new product", new_admin_product_path %>
+
+<hr>
+<% @products.each do |product| %>
+<%= product.breed %>
+<br>
+<%= product.dob %>
+<br>
+<%= product.description %>
+<br>
+<%= product.price %>
+<br>
+<%= product.quantity %>
+<br>
+<%= link_to "Edit", edit_admin_product_path(product) %>
+<%= link_to "Delete", admin_product_path(product), method: :delete, data: {confirm: "Are you sure?"} %>
+
+<% end %>
