@@ -1,6 +1,6 @@
 class Product < ApplicationRecord
 
-  has_many :line_items
+  has_many :line_items,     dependent: :destroy
   has_many :product_images, dependent: :destroy
 
   validates :breed,       presence: true
