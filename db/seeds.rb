@@ -36,3 +36,7 @@ end
 for i in (1..5)
   Order.create(user: User.find(i), orderstatus: 0)
 end
+
+for i in (1..5)
+  LineItem.create(order: Order.find(i), product: Product.find(i), quantity: 1)
+end

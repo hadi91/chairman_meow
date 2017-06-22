@@ -1,1 +1,8 @@
 <h1>You are editing order no.<%= @order.id %></h1>
+
+<%= simple_form_for @order, url: admin_order_path, method: :put do |f| %>
+
+<%= f.select :orderstatus, ["New", "Pending Payment", "Payment Approved", "Awaiting Pickup", "Shipped", "Delivered", "Disputed", "Refunded", "Cancelled"] %>
+<%= f.submit %>
+
+<% end  %>

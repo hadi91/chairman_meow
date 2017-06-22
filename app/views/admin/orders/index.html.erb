@@ -3,6 +3,7 @@
 <% @orders.each do |order| %>
 
 <p>Order No.<%= order.id %></p>
+<p>Made by <%= order.user.username %></p>
 <%= link_to "View this order", admin_order_path(order) %>
-
+<hr>
 <% end %>
