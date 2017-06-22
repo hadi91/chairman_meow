@@ -1,8 +1,9 @@
 <h1>Home Page</h1>
 
-<%if current_user.is_admin? %>
+<% if current_admin %>
   <%= link_to "Create new product", new_admin_product_path %>
 <% end %>
+
 
 <hr>
 <% @products.each do |product| %>
@@ -17,9 +18,9 @@
 <%= product.quantity %>
 <br>
 
-<%if current_user.is_admin? %>
-  <%= link_to "Edit", edit_admin_product_path(product) %>
-  <%= link_to "Delete", admin_product_path(product), method: :delete, data: {confirm: "Are you sure?"} %>
-<% end %>
+
+<%= link_to "Edit", edit_admin_product_path(product) %>
+<%= link_to "Delete", admin_product_path(product), method: :delete, data: {confirm: "Are you sure?"} %>
+
 
 <% end %>

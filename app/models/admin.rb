@@ -8,5 +8,4 @@ class Admin < ApplicationRecord
   validates :lastname,         presence: true
   validates :username,         presence: true, uniqueness: { case_sensitive: false }
   validates :email,            presence: true
-  validates :address,          presence: true
 end
