@@ -4,12 +4,13 @@
 
 <hr>
 <% @products.each do |product| %>
-<p><%= product.breed %>, <%= product.gender %></p>
+
+<p><%= link_to "#{product.breed}", admin_product_path(product) %>, <%= product.gender %></p>
 <%= product.dob %>
 <br>
 <%= product.description %>
 <br>
-<%= product.price %>
+SGD$<%= product.price %>
 <br>
 <%= product.quantity %>
 <br>

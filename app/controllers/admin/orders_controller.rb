@@ -18,6 +18,7 @@ class Admin::OrdersController < ApplicationController
   end
 
   def show
+    @lineitems = LineItem.where(order: @order)
   end
 
   private
