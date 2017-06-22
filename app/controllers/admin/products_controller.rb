@@ -1,5 +1,4 @@
 class Admin::ProductsController < ApplicationController
-  # before_action :require_admin
   before_action :find_product, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -47,10 +46,4 @@ class Admin::ProductsController < ApplicationController
   def find_product
     @product = Product.find(params[:id])
   end
-
-  # def require_admin
-  #   unless current_user.is_admin?
-  #     redirect_to root_path
-  #   end
-  # end
 end

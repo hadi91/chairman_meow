@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
-  devise_for :admins, :controllers =>{:registrations => 'admin/registrations'}
-  
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  devise_for :admins, :controllers =>{ registrations: 'admins/registrations', sessions: 'admins/sessions', passwords: 'admins/passwords' }
+
+  devise_for :users, :controllers => { omniauth_callbacks: "users/omniauth_callbacks" }
 
   resources :products, only: [:index, :show]
   #resource :shopping_cart, except: [:new, :create]
