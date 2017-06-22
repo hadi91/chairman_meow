@@ -16,3 +16,27 @@ require 'faker'
   gender =        Faker::Number.between(0,1)
   Product.create(breed: breed, dob: dob, description: description, price: price, quantity: quantity, gender: gender)
 end
+
+
+5.times do
+  firstname =         Faker::Name.first_name
+  lastname =          Faker::Name.last_name
+  username =          Faker::Internet.user_name
+  telephone_number =  Faker::PhoneNumber.cell_phone
+  address =           Faker::Address.street_address
+  email =             Faker::Internet.email
+  password =          123456
+  User.create(firstname: firstname, lastname: lastname, username: username, telephone_number: telephone_number, address: address, email: email, password: password)
+end
+
+for i in (1..5)
+  LineItem.create(shopping_cart: ShoppingCart.find(i), product: Product.find(i), quantity: 1)
+end
+
+for i in (1..5)
+  Order.create(user: User.find(i), orderstatus: 0)
+end
+
+for i in (1..5)
+  LineItem.create(order: Order.find(i), product: Product.find(i), quantity: 1)
+end

@@ -1,3 +1,20 @@
 <h1>Edit Product</h1>
+<%= simple_form_for @product, url: admin_product_path, method: :put do |f| %>
+<%= f.input :breed %>
+<br>
+<%= f.input :dob, label: "Date of Birth" %>
+<br>
+<%= f.input :description %>
+<br>
+<%= f.input :price %>
+<br>
+<%= f.label "Gender" %>
+<%= f.select :gender, ["Male", "Female"]%>
+<br>
+<%= f.label "Quantity" %>
+<%= f.select :quantity, [1,2,3,4,5]%>
+<br>
+<%= f.submit %>
+<% end %>
 
-<%= render partial: 'product_form' %>
+<%= link_to "Cancel", admin_products_path %>

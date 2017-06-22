@@ -1,0 +1,17 @@
+<%= link_to "All Orders", admin_orders_path %>
+
+<h1>Order No.<%= @order.id %></h1>
+<p>Order Status: <%= @order.orderstatus %></p>
+<p>Your order has <%= @order.line_items.count %> items </p>
+<hr>
+
+<%= @lineitems.each do |lineitem| %>
+<p><%= lineitem.product.breed %></p>
+<p><%= lineitem.product.gender %></p>
+<p><%= lineitem.product.dob %></p>
+<p><%= lineitem.product.description %></p>
+<p>SGD$<%= lineitem.product.price %></p>
+<hr>
+<% end %>
+
+<%= link_to "Edit this order", edit_admin_order_path %>

@@ -3,7 +3,7 @@ class Admin::OrdersController < ApplicationController
   before_action :find_order, except: [:index]
 
   def index
-    @orders = Order.all
+    @orders = Order.all.order("created_at ASC")
   end
 
   def edit
@@ -11,13 +11,14 @@ class Admin::OrdersController < ApplicationController
 
   def update
     if @order.update(order_params)
-      redirect_to
+      redirect_to admin_order_path(@order)
     else
       render 'Edit'
-    end 
+    end
   end
 
   def show
+    @lineitems = LineItem.where(order: @order)
   end
 
   private
