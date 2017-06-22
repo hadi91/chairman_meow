@@ -27,5 +27,15 @@ module ChairmanMeow
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    config.generators do |g|
+      g.test_framework :rspec, fixture_replacement: :factory_girl
+      g.fixture false
+      g.view_specs false
+      g.helper_specs false
+      g.controller_specs false
+      g.routing_specs false
+      g.factory_girl false
+    end
   end
 end
