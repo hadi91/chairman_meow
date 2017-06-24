@@ -1,10 +1,17 @@
-<h1>Items in your cart</h1>
+<h1>Cats in your cart</h1>
 
 <% @line_items.each do |line_item| %>
 
-<%= line_item.product.breed %>
-<%= line_item.quantity %>
+Breed: <%= link_to line_item.product.breed, meow_product_path(line_item.product) %> <br>
+Quantity: <%= line_item.quantity %> <br>
+Quantity still available: <%= line_item.product.quantity %> <br>
 <%= link_to 'Delete item from cart', meow_line_item_path(line_item_id: line_item), method: :delete %>
+
+<%= simple_form_for line_item, url: meow_line_item_path(line_item_id: line_item), method: :patch do |f| %>
+  <% total_quantity = line_item.product.quantity + line_item.quantity %>
+  <%= f.input :quantity, collection: 1..total_quantity %>
+  <%= f.submit 'Update quantity' %>
+<% end %>
 <br>
 
 <% end %>

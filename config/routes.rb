@@ -4,18 +4,13 @@ Rails.application.routes.draw do
 
   devise_for :users, :controllers => { omniauth_callbacks: "users/omniauth_callbacks" }
 
-  namespace :browse do
-    root "products#index"
-    resources :products, only: [:index, :show]
-    resource :shopping_cart, except: [:new, :create]
-    resource :line_item, only: [:create, :destroy]
-  end
+  resources :products, only: [:index]
 
   namespace :meow do
     #resources :orders, except: [:edit, :update]
     resources :products, only: [:index, :show]
     resource :shopping_cart, except: [:new, :create]
-    resource :line_item, only: [:create, :destroy]
+    resource :line_item, only: [:create, :destroy, :update]
   end
 
   namespace :admin do
@@ -23,4 +18,5 @@ Rails.application.routes.draw do
     resources :products
   end
 
+  root "products#index"
 end

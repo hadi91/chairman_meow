@@ -18,6 +18,8 @@ class ApplicationController < ActionController::Base
           line_item.update(shopping_cart: current_user.shopping_cart)
           line_item.save
         end
+        visitor_cart.destroy
+        session.delete['cart']
       end
       current_user.shopping_cart
     else
