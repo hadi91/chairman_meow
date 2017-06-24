@@ -1,4 +1,4 @@
-class Meow::ShoppingCartsController < ApplicationController
+class Browse::ShoppingCartsController < ApplicationController
 
   def show
     @shopping_cart = current_cart

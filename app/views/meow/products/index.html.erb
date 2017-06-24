@@ -1,11 +1,22 @@
-<h1>All Cats</h1>
+<h1>All cats</h1>
 
+<hr>
 <% @products.each do |product| %>
+  <%= product.breed %>
+  <br>
+  <%= product.dob %>
+  <br>
+  <%= product.description %>
+  <br>
+  <%= product.price %>
+  <br>
+  <%= product.quantity %>
+  <br>
 
-<%= product.breed %>
-<%= product.dob %>
-<%= product.description %>
-<%= product.price %>
-<%= product.quantity %>
+
+  <%= link_to "Show", meow_product_path(product) %>
+
+  <hr>
+
 
 <% end %>

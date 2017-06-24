@@ -40,7 +40,7 @@ class User < ApplicationRecord
   private
 
   def create_shopping_cart
-    ShoppingCart.create(user: self)
+    user_cart = ShoppingCart.create(user: self)
   end
 
 end

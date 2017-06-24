@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe ProductsController, type: :controller do
+RSpec.describe Browse::ProductsController, type: :controller do
 
   # TODO: Sign in admin
   # TODO: check non-admin authentication for all actions

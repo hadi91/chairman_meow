@@ -1,4 +1,4 @@
-class Meow::LineItemsController < ApplicationController
+class Browse::LineItemsController < ApplicationController
 
   def create
     @product = Product.find(params[:product_id])
@@ -10,16 +10,16 @@ class Meow::LineItemsController < ApplicationController
       @line_item.save
       @product.quantity -= line_item_params[:quantity].to_i
       @product.save
-      redirect_to meow_shopping_cart_path
+      redirect_to browse_shopping_cart_path
     else
       @line_item = LineItem.new(product: @product, quantity: line_item_params[:quantity], shopping_cart: @shopping_cart)
 
       if @line_item.save
         @product.quantity -= @line_item.quantity
         @product.save
-        redirect_to meow_shopping_cart_path
+        redirect_to browse_shopping_cart_path
       else
-        redirect_to meow_product_path(product_id: @product)
+        redirect_to browse_product_path(product_id: @product)
         flash[:notice] = 'This cat is no longer available. Sorry!'
       end
     end
@@ -31,7 +31,7 @@ class Meow::LineItemsController < ApplicationController
     @product.quantity += @line_item.quantity
     @product.save
     @line_item.destroy
-    redirect_to meow_shopping_cart_path
+    redirect_to browse_shopping_cart_path
   end
 
   private

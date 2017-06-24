@@ -10,13 +10,16 @@
 
   <body>
 
-    <%= link_to "Home", meow_products_path %>
+
     <% if user_signed_in? || admin_signed_in? %>
-    <%= link_to "My Cart", meow_shopping_cart_path %>
+      <%= link_to "Home", meow_products_path %>
+      <%= link_to "My Cart", meow_shopping_cart_path %>
       <%= link_to "Edit Profile", edit_user_registration_path(@user) %>
       <%= link_to "Log Out", destroy_user_session_path, :method => "delete", data:{ confirm:"ARE YOU SURE?!?" } %>
     <% else %>
-      <%= link_to "New User", new_user_registration_path %>
+      <%= link_to "Home", browse_products_path %>
+      <%= link_to "My Cart", browse_shopping_cart_path %>
+      <%= link_to "Sign Up", new_user_registration_path %>
       <%= link_to "User Log In", new_user_session_path %>
       <%= link_to "Admin Log In", new_admin_session_path %>
     <% end %>
