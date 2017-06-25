@@ -6,6 +6,10 @@ class Admin::OrdersController < ApplicationController
     @orders = Order.all.order("created_at ASC")
   end
 
+  def show
+    @lineitems = LineItem.where(order: @order)
+  end
+
   def edit
   end
 
@@ -13,12 +17,8 @@ class Admin::OrdersController < ApplicationController
     if @order.update(order_params)
       redirect_to admin_order_path(@order)
     else
-      render 'Edit'
+      render :edit
     end
-  end
-
-  def show
-    @lineitems = LineItem.where(order: @order)
   end
 
   private

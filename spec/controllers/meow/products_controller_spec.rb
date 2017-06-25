@@ -26,4 +26,25 @@ RSpec.describe Meow::ProductsController, type: :controller do
 
   end
 
+  describe 'GET #newest' do
+
+    let!(:products) { create_list(:product, 4) }
+
+    before { get :newest }
+
+    it { expect(assigns(:products)).to eq(Product.last(3)) }
+
+  end
+
+  describe 'GET #premium' do
+
+    let!(:products) { create_list(:product, 3) }
+    let!(:product) { create(:product, price: 4000) }
+
+    before { get :premium }
+
+    it { expect(assigns(:products)).to match_array(Product.last) }
+
+  end
+
 end

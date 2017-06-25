@@ -19,7 +19,18 @@ RSpec.describe Meow::LineItemsController, type: :controller do
   #     it { expect(assigns(:line_item)).to eq(line_item) }
   #
   #   end
-  # 
+  #
+  # end
+
+  # describe 'PATCH #update' do
+  #
+  #   let(:product) { create(:product) }
+  #   let(:line_item) { create(:line_item, product: product, quantity: 1) }
+  #
+  #   before { patch :update, params: { line_item_id: line_item, params: { line_item: { quantity: 2 } } } }
+  #
+  #   it { expect(assigns(:line_item)).to eq(line_item) }
+  #
   # end
 
   describe 'DELETE #destroy' do
