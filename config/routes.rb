@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       collection do
         get 'newest'
         get 'premium'
+        get 'search'
       end
     end
     resource :shopping_cart, except: [:new, :create]

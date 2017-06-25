@@ -17,4 +17,8 @@ class Meow::ProductsController < ApplicationController
     @products = Product.premium
   end
 
+  def search
+    byebug
+  end
+
 end

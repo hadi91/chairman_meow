@@ -1,22 +1,22 @@
-<h1>All cats</h1>
-
-<hr>
-<% @products.each do |product| %>
-  <%= product.breed %>
-  <br>
-  <%= product.dob %>
-  <br>
-  <%= product.description %>
-  <br>
-  <%= product.price %>
-  <br>
-  <%= product.quantity %>
-  <br>
-
-
-  <%= link_to "Show", meow_product_path(product) %>
-
-  <hr>
-
-
-<% end %>
+<div class="container">
+  <h1>Pick a breed!</h1>
+  <div class="row">
+    <% @products.each do |product| %>
+    <% if product.quantity > 0 %>
+      <div class="col-sm-6 col-md-4 row-eq-height">
+        <div class="thumbnail">
+          <img src="..." alt="...">
+          <div class="caption">
+            <h3><%= product.breed %></h3>
+            <p><%= product.description %></p>
+            <p>Born on: <%= product.dob %></p>
+            <p>Price: $<%= product.price %></p>
+            <p>Quantity available: <%= product.quantity %></p>
+            <p><%= button_to "Details", meow_product_path(product), method: :get, class: 'btn btn-primary', role: 'button' %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <% end %>
+  </div>
+</div>
