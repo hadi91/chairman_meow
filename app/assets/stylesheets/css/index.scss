@@ -2,6 +2,16 @@ body {
   font-family: Georgia, "Times New Roman", Serif;
 }
 
+.navbar-default li.dropdown li:hover .sub-menu {
+  visibility: visible;
+}
+
+table {
+  width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
 .thumbnail p {
   width: 250px;
   white-space: nowrap;
@@ -13,14 +23,4 @@ body {
 .carousel-inner > .item > a > img {
   margin: auto;
   max-height: 500px;
-}
-
-table {
-  width: 100%;
-  height: auto;
-  vertical-align: middle;
-}
-
-table .table-small {
-  width: auto;
 }

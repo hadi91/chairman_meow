@@ -13,31 +13,33 @@
         <!-- Table -->
         <table class="table">
           <tr>
-            <th class="table-breed">Breed</th>
-            <th class="table-small">Price</th>
-            <th class="table-small">Reserved</th>
-            <th class="table-small">Available</th>
-            <th>Update?</th>
+            <th>Breed</th>
+            <th>Unit Price</th>
+            <th>Total Price</th>
+            <th>Quantity</th>
+            <th>Update?*</th>
             <th></th>
             <th>Remove from cart?</th>
           </tr>
           <tr>
             <% @line_items.each do |line_item| %>
+            <% if line_item.quantity > 0 %>
             <td><%= link_to line_item.product.breed, meow_product_path(line_item.product) %></td>
-            <td>$<%= line_item_price = line_item.quantity * line_item.product.price %></td>
+            <td>S$<%= line_item.product.price %></td>
+            <td>S$<%= line_item_price = line_item.quantity * line_item.product.price %></td>
             <td><%= line_item.quantity %></td>
-            <td><%= line_item.product.quantity %></td>
             <td><%= simple_form_for line_item, url: meow_line_item_path(line_item_id: line_item), method: :patch do |f| %>
             <% total_quantity = line_item.product.quantity + line_item.quantity %>
-            <%= f.input :quantity, collection: 1..total_quantity, label: false %></td>
+            <%= f.input :quantity, collection: 0..total_quantity, label: false %></td>
             <td><%= f.submit 'Update', class: 'btn btn-primary' %><% end %></td>
             <td><%= button_to 'Remove', meow_line_item_path(line_item_id: line_item), method: :delete, class: 'btn btn-danger' %></td>
           </tr>
-          <% end %>
+              <% end %>
+            <% end %>
           <% end %>
           <tr>
-            <td>Total price</td>
-            <td>$<%= @shopping_cart.total_price %></td>
+            <td>Cart Total</td>
+            <td>S$<%= @shopping_cart.total_price %></td>
             <td></td>
             <td></td>
             <td></td>
@@ -48,7 +50,7 @@
       </div>
 
 
-      <h3></h3>
+      <p class="pull-right">*Subject to availability</p>
 
     </div>
   </div>

@@ -1,22 +1,6 @@
 <div class="container">
   <h1>Our premium breeds!</h1>
   <div class="row">
-    <% @products.each do |product| %>
-    <% if product.quantity > 0 %>
-      <div class="col-sm-6 col-md-4 row-eq-height">
-        <div class="thumbnail">
-          <img src="..." alt="...">
-          <div class="caption">
-            <h3><%= product.breed %></h3>
-            <p><%= product.description %></p>
-            <p>Born on: <%= product.dob %></p>
-            <p>Price: $<%= product.price %></p>
-            <p>Quantity available: <%= product.quantity %></p>
-            <p><%= button_to "Details", meow_product_path(product), method: :get, class: 'btn btn-primary', role: 'button' %></p>
-          </div>
-        </div>
-      </div>
-    <% end %>
-    <% end %>
+    <%= render partial: 'partials/productlist' %>
   </div>
 </div>

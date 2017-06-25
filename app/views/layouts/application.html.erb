@@ -38,7 +38,7 @@
           <form class="navbar-form navbar-left">
             <div class="form-group">
               <%= form_tag search_meow_products_path, method: :get do %>
-                <%= text_field_tag :query, params[:query], placeholder: 'Looking for a specific cat?', class: 'form-control' %>
+                <%= text_field_tag :query, params[:query], placeholder: 'Looking for a specific breed?', class: 'form-control' %>
                 <%= submit_tag 'Search', class: 'btn btn-default' %>
                 <!-- <input type="text" name="query" class="form-control" placeholder="Looking for a specific cat?" autocomplete="off"> -->
               <% end %>
@@ -53,7 +53,7 @@
               <li><%= link_to "Log out", destroy_user_session_path, :method => "delete", data: { confirm:"ARE YOU SURE?!?" }%></li>
             <% else %>
               <li><%= link_to "Sign up", new_user_registration_path %></li>
-              <li><%= link_to "User log in", new_user_session_path %></li>
+              <li><%= link_to "Log in", new_user_session_path %></li>
               <li><%= link_to "Admin log in", new_admin_session_path %></li>
             <% end %>
             <% if admin_signed_in? %>

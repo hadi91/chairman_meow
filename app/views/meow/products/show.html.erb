@@ -1,9 +1,9 @@
 <div class="container">
   <div class="row">
     <%= link_to 'Back to previous', url_for(:back) %>
-    <h1>Breed: <%= @product.breed %> (<%= @product.gender.capitalize %>) </h1>
+    <h1><%= @product.breed %> (<%= @product.gender.capitalize %>) </h1>
   </div>
-  <div class="row well">
+  <div class="row">
     <div class="col-md-9 col-xs-12">
 
       <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -44,7 +44,6 @@
 
     <div class="col-md-3 col-xs-12">
       <div class="well">
-        <h2>Details</h2>
         Birthdate: <%= @product.dob %> <br>
         Price: $<%= @product.price %> <br>
         Gender: <%= @product.gender %> <br>
