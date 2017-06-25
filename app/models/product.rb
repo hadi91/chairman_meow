@@ -10,10 +10,11 @@ class Product < ApplicationRecord
   validates :gender,      presence: true
   validates :quantity,    presence: true
 
-
   enum gender: {
     "Female": 0,
     "Male": 1
   }
+
+  scope :premium, -> { where("price > ?", 3000) }
 
 end

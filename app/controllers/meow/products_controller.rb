@@ -9,4 +9,12 @@ class Meow::ProductsController < ApplicationController
     @line_item = LineItem.new
   end
 
+  def newest
+    @products = Product.last(3)
+  end
+
+  def premium
+    @products = Product.premium
+  end
+
 end

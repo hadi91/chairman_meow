@@ -8,7 +8,12 @@ Rails.application.routes.draw do
 
   namespace :meow do
     #resources :orders, except: [:edit, :update]
-    resources :products, only: [:index, :show]
+    resources :products, only: [:index, :show] do
+      collection do
+        get 'newest'
+        get 'premium'
+      end
+    end
     resource :shopping_cart, except: [:new, :create]
     resource :line_item, only: [:create, :destroy, :update]
   end
