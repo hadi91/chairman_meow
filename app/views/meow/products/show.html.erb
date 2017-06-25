@@ -3,12 +3,12 @@
 Birthdate: <%= @product.dob %> <br>
 Description: <%= @product.description %> <br>
 Price: <%= @product.price %> <br>
-Gender: <%= @product.gender.capitalize %> <br>
+Gender: <%= @product.gender %> <br>
 Quantity available: <%= @product.quantity %>
 
-<h2>Add breed to cart</h2>
+<h2>Want this breed?</h2>
 
 <%= simple_form_for @line_item, url: meow_line_item_path(product_id: @product), method: :post do |f| %>
   <%= f.input :quantity, collection: 1..@product.quantity %>
-  <%= f.submit %>
+  <%= f.submit 'Add to cart' %>
 <% end %>

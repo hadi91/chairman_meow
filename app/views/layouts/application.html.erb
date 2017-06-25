@@ -9,20 +9,74 @@
   </head>
 
   <body>
-    <%= link_to "Home", root_path %>
-    <%= link_to "My Cart", meow_shopping_cart_path %>
-    <% if user_signed_in? || admin_signed_in? %>
-      <%= link_to "Edit Profile", edit_user_registration_path(@user) %>
-      <%= link_to "Log Out", destroy_user_session_path, :method => "delete", data:{ confirm:"ARE YOU SURE?!?" } %>
-    <% else %>
-      <%= link_to "Sign Up", new_user_registration_path %>
-      <%= link_to "User Log In", new_user_session_path %>
-      <%= link_to "Admin Log In", new_admin_session_path %>
-    <% end %>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <%= link_to "Chairman Meow", root_path, class: 'navbar-brand' %>
+        </div>
 
-    <% if admin_signed_in? %>
-      <%= link_to "Admin Sign Up", new_admin_registration_path %>
-    <% end %>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <!-- <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li> -->
+            <li><%= link_to 'Latest additions', root_path %></li>
+            <li><%= link_to 'Premium breeds', root_path %></li>
+            <!-- <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li> -->
+          </ul>
+          <form class="navbar-form navbar-left">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Looking for a specific cat?">
+            </div>
+            <button type="submit" class="btn btn-default">Search</button>
+          </form>
+          <ul class="nav navbar-nav navbar-right">
+            <% if !admin_signed_in? %>
+              <li><%= link_to 'My cart', meow_shopping_cart_path %></li>
+            <% end %>
+            <% if user_signed_in? || admin_signed_in? %>
+              <li><%= link_to "My profile", edit_user_registration_path(@user) %></li>
+              <li><%= link_to "Log out", destroy_user_session_path, :method => "delete", data: { confirm:"ARE YOU SURE?!?" }%></li>
+            <% else %>
+              <li><%= link_to "Sign up", new_user_registration_path %></li>
+              <li><%= link_to "User log in", new_user_session_path %></li>
+              <li><%= link_to "Admin log in", new_admin_session_path %></li>
+            <% end %>
+            <% if admin_signed_in? %>
+              <li><%= link_to "Admin sign up", new_admin_registration_path %></li>
+            <% end %>
+
+            <!-- <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </li> -->
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
 
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
