@@ -8,3 +8,19 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+  margin: auto;
+  max-height: 500px;
+}
+
+table {
+  width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+table .table-small {
+  width: auto;
+}
