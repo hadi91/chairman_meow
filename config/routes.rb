@@ -1,16 +1,22 @@
 Rails.application.routes.draw do
 
-  devise_for :admins, :controllers =>{ registrations: 'admins/registrations', sessions: 'admins/sessions', passwords: 'admins/passwords' }
+  devise_for :admins, :controllers => { registrations: 'admins/registrations', sessions: 'admins/sessions', passwords: 'admins/passwords' }
 
   devise_for :users, :controllers => { omniauth_callbacks: "users/omniauth_callbacks" }
 
-  resources :products, only: [:index, :show]
-  #resource :shopping_cart, except: [:new, :create]
+  resources :products, only: [:index]
 
   namespace :meow do
     #resources :orders, except: [:edit, :update]
-    resources :products, only: [:index, :show]
-    #resource :shopping_cart, except: [:new, :create]
+    resources :products, only: [:index, :show] do
+      collection do
+        get 'newest'
+        get 'premium'
+        get 'search'
+      end
+    end
+    resource :shopping_cart, except: [:new, :create]
+    resource :line_item, only: [:create, :destroy, :update]
   end
 
   namespace :admin do

@@ -13,7 +13,7 @@ class Admin::OrdersController < ApplicationController
     if @order.update(order_params)
       redirect_to admin_order_path(@order)
     else
-      render 'Edit'
+      render :edit
     end
   end
 

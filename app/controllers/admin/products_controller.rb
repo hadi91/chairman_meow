@@ -34,7 +34,7 @@ class Admin::ProductsController < ApplicationController
 
   def destroy
     @product.destroy
-    redirect_to root_path
+    redirect_to admin_products_path
   end
 
   private

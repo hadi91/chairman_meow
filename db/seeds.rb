@@ -12,11 +12,10 @@ require 'faker'
   dob =           Faker::Date.backward(365)
   description =   Faker::Lorem.paragraph
   price =         Faker::Commerce.price(500.00..5000.00)
-  quantity =      Faker::Number.between(1,5)
+  quantity =      Faker::Number.between(1,20)
   gender =        Faker::Number.between(0,1)
   Product.create(breed: breed, dob: dob, description: description, price: price, quantity: quantity, gender: gender)
 end
-
 
 5.times do
   firstname =         Faker::Name.first_name
