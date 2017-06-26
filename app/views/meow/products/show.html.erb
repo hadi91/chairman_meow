@@ -54,7 +54,7 @@
 
         <%= simple_form_for @line_item, url: meow_line_item_path(product_id: @product), method: :post do |f| %>
         <%= f.input :quantity, collection: 1..@product.quantity %>
-        <%= f.submit 'Add to cart' %>
+        <%= f.submit 'Add to cart', class: 'btn btn-primary' %>
         <% end %>
       </div>
     </div>

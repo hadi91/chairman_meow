@@ -19,21 +19,28 @@ class Meow::LineItemsController < ApplicationController
         @product.save
         redirect_to meow_shopping_cart_path
       else
-        redirect_to meow_product_path(product_id: @product)
-        flash[:notice] = 'This cat is no longer available. Sorry!'
+        redirect_to meow_product_path(id: @product)
+        flash[:notice] = 'Your selection was invalid! Please try again'
       end
     end
   end
 
   def update
     @line_item = LineItem.find(params[:line_item_id])
-    difference = @line_item.quantity - line_item_params[:quantity].to_i
-    @line_item.quantity -= difference
-    @line_item.save
-    @product = @line_item.product
-    @product.quantity += difference
-    @product.save
-    redirect_to meow_shopping_cart_path
+    if line_item_params[:quantity] == ''
+      flash[:notice] = 'Your selection was invalid! Please try again'
+      redirect_to meow_shopping_cart_path
+    # elsif line_item_params[:quantity] == '0'
+    #   redirect_to :controller => "meow/line_items", :action => "destroy", :method => "delete", :id => @line_item.id
+    else
+      difference = @line_item.quantity - line_item_params[:quantity].to_i
+      @line_item.quantity -= difference
+      @line_item.save
+      @product = @line_item.product
+      @product.quantity += difference
+      @product.save
+      redirect_to meow_shopping_cart_path
+    end
   end
 
   def destroy
