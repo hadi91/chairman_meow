@@ -39,7 +39,11 @@ class Meow::LineItemsController < ApplicationController
       @product = @line_item.product
       @product.quantity += difference
       @product.save
-      redirect_to meow_shopping_cart_path
+
+      respond_to do |format|
+        format.html { redirect_to meow_shopping_cart_path }
+        format.js
+      end
     end
   end
 
@@ -49,7 +53,11 @@ class Meow::LineItemsController < ApplicationController
     @product.quantity += @line_item.quantity
     @product.save
     @line_item.destroy
-    redirect_to meow_shopping_cart_path
+    
+    respond_to do |format|
+      format.html { redirect_to meow_shopping_cart_path }
+      format.js
+    end
   end
 
   private

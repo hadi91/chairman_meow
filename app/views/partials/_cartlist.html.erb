@@ -1,0 +1,50 @@
+<% if @line_items.empty? %>
+  <h2>You don't seem to have added any cats yet! <%= link_to 'Click here to shop for some!', meow_products_path %></h2>
+<% else %>
+  <div class="panel panel-default">
+    <div class="panel-heading"><h1>Cats in your cart</h1></div>
+    <!-- <div class="panel-body">
+    <p>...</p>
+  </div> -->
+
+  <!-- Table -->
+  <table class="table cartlist-tbl">
+    <tr>
+      <th>Breed</th>
+      <th>Unit Price</th>
+      <th>Total Price</th>
+      <th>Quantity</th>
+      <th>Update?*</th>
+      <th></th>
+      <th>Remove from cart?</th>
+    </tr>
+    <tr>
+      <% @line_items.each do |line_item| %>
+      <% if line_item.quantity > 0 %>
+      <td><%= link_to line_item.product.breed, meow_product_path(line_item.product) %></td>
+      <td>S$<%= line_item.product.price %></td>
+      <td>S$<%= line_item_price = line_item.quantity * line_item.product.price %></td>
+      <td><%= line_item.quantity %></td>
+      <td><%= simple_form_for line_item, url: meow_line_item_path(line_item_id: line_item), method: :patch do |f| %>
+        <% total_quantity = line_item.product.quantity + line_item.quantity %>
+        <%= f.input :quantity, collection: 0..total_quantity, label: false %></td>
+        <td><%= f.submit 'Update', class: 'btn btn-primary' %><% end %></td>
+        <td><%= button_to 'Remove', meow_line_item_path(line_item_id: line_item), method: :delete, class: 'btn btn-danger' %></td>
+      </tr>
+      <% end %>
+      <% end %>
+      <% end %>
+      <tr>
+        <% if @line_items.count > 0 %>
+        <td><strong>Cart Total</strong></td>
+        <td></td>
+        <td><strong>S$<%= @shopping_cart.total_price %></strong></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>Checkout cart</td>
+      </tr>
+    </table>
+  </div>
+  <p class="pull-right">*Subject to availability</p>
+  <% end %>
