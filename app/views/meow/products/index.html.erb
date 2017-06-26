@@ -1,11 +1,6 @@
-<h1>All Cats</h1>
-
-<% @products.each do |product| %>
-
-<%= product.breed %>
-<%= product.dob %>
-<%= product.description %>
-<%= product.price %>
-<%= product.quantity %>
-
-<% end %>
+<div class="container">
+  <h1>Pick a breed!</h1>
+  <div class="row">
+    <%= render partial: 'partials/productlist' %>
+  </div>
+</div>

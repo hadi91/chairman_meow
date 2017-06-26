@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :product_image do
-    product nil
-    imageurl "MyString"
+    imageurl "imageurl1"
+    association :product, factory: :product
   end
 end
