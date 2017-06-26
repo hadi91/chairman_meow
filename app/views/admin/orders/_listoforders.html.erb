@@ -1,6 +1,6 @@
 <div class="dropdown">
   <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-    All Orders
+    Order Status
     <span class="caret"></span>
   </button>
   <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
@@ -16,6 +16,12 @@
     <li><%= link_to "Cancelled", cancelled_admin_orders_path %></li>
   </ul>
 </div>
+
+
+<%= form_tag admin_orders_path, method: :get do %>
+<%= text_field_tag :search, params[:search], placeholder: "Search Orders" %>
+<%= button_tag "Search" %>
+<% end %>
 <hr>
 
 <% @orders.each do |order| %>

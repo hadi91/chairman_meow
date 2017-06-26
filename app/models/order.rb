@@ -1,4 +1,6 @@
 class Order < ApplicationRecord
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
 
   belongs_to :user
 
@@ -29,7 +31,7 @@ class Order < ApplicationRecord
   scope :cancelled,       ->{ where(orderstatus:8)}
 
 
-  def self.search(search)
-    where("orderstatus LIKE ?", "%#{search}")
-  end
+  #def self.search(search)
+  #  where("orderstatus ILIKE ?", "%#{search}%")
+  #end
 end
