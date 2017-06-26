@@ -1,7 +1,7 @@
 class ShoppingCart < ApplicationRecord
   belongs_to :user, optional: true
 
-  has_many :line_items, dependent: :destroy
+  has_many :line_items
 
   def total_price
     total_price = line_items.map do |line_item|
