@@ -2,7 +2,7 @@
 <% if product.quantity > 0 %>
   <div class="col-sm-6 col-md-4 row-eq-height">
     <div class="thumbnail">
-      <img src="..." alt="...">
+      <%= image_tag product.product_images.first.image %>
       <div class="caption">
         <h3><%= product.breed %></h3>
         <p><%= product.description %></p>
