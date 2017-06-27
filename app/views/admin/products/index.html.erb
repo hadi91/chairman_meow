@@ -1,20 +1,7 @@
-<h1>Home Page</h1>
-
-<%= link_to "Create new product", new_admin_product_path %>
-
-<hr>
-<% @products.each do |product| %>
-
-<p><%= link_to "#{product.breed}", admin_product_path(product) %>, <%= product.gender %></p>
-<%= product.dob %>
-<br>
-<%= product.description %>
-<br>
-SGD$<%= product.price %>
-<br>
-<%= product.quantity %>
-<br>
-<%= link_to "Edit", edit_admin_product_path(product) %>
-<%= link_to "Delete", admin_product_path(product), method: :delete, data: {confirm: "Are you sure?"} %>
-<hr>
-<% end %>
+<div class="container">
+  <h1>Pick a breed!</h1>
+  <%= link_to "Create new product", new_admin_product_path %>
+  <div class="row">
+    <%= render partial: 'partials/productlist' %>
+  </div>
+</div>

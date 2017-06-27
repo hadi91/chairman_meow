@@ -9,7 +9,23 @@
         <p>Born on: <%= product.dob %></p>
         <p>Price: $<%= product.price %></p>
         <p>Quantity available: <%= product.quantity %></p>
-        <p><%= button_to "Details", meow_product_path(product), method: :get, class: 'btn btn-primary', role: 'button' %></p>
+
+        <div class="row">
+          <div class="col-md-3">
+            <p><%= button_to "Details", meow_product_path(product), method: :get, class: 'btn btn-primary', role: 'button' %></p>
+          </div>
+
+          <% if admin_signed_in? %>
+          <div class="col-md-2">
+            <p><%= button_to "Edit", edit_admin_product_path(product), method: :get, class: 'btn btn-primary', role: 'button' %></p>
+          </div>
+
+          <div class="col-md-2">
+            <p><%= button_to "Delete", admin_product_path(product), method: :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-primary', role: 'button' %></p>
+          </div>
+          <% end %>
+
+        </div><!--closes row-->
       </div>
     </div>
   </div>
