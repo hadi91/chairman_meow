@@ -1,17 +1,35 @@
-<%= link_to "All Orders", admin_orders_path %>
+<div class="container">
 
-<h1>Order No.<%= @order.id %></h1>
-<p>Order Status: <%= @order.orderstatus %></p>
-<p>Your order has <%= @order.line_items.count %> items </p>
-<hr>
+  <div class="row">
+    <div class="col-md-5 col-md-offset-1">
+      <h1>Order No.<%= @order.id %></h1>
+    </div>
+  </div><!--closes row-->
+  <hr>
 
-<% @lineitems.each do |lineitem| %>
-<p><%= lineitem.product.breed %></p>
-<p><%= lineitem.product.gender %></p>
-<p><%= lineitem.product.dob %></p>
-<p><%= lineitem.product.description %></p>
-<p>SGD$<%= lineitem.product.price %></p>
-<hr>
-<% end %>
+  <div class="row">
+    <div class="col-md-5 col-md-offset-1">
+      <h4>Order Status: <%= @order.orderstatus %></h4>
+      <h4>This order has <%= @order.line_items.count %> items </h4>
+    </div><!--closes orderstatus col-->
+  </div><!--closes row-->
 
-<%= link_to "Edit this order", edit_admin_order_path %>
+  <hr>
+
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <% @lineitems.each do |lineitem| %>
+      <p><%= lineitem.product.breed %>, <%= lineitem.product.gender %></p>
+      <p><%= lineitem.quantity %></p>
+      <p>SGD$<%= lineitem.product.price %></p>
+      <hr>
+      <% end %>
+
+      <%= link_to "Edit this order", edit_admin_order_path %>
+
+    </div><!--closes list col-->
+  </div><!--closes row-->
+
+
+
+</div><!--closes container-->

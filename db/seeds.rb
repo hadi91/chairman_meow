@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 
-5.times do
+20.times do
   breed =         Faker::Cat.breed
   dob =           Faker::Date.backward(365)
   description =   Faker::Lorem.paragraph
@@ -17,7 +17,7 @@ require 'faker'
   Product.create(breed: breed, dob: dob, description: description, price: price, quantity: quantity, gender: gender)
 end
 
-5.times do
+20.times do
   firstname =         Faker::Name.first_name
   lastname =          Faker::Name.last_name
   username =          Faker::Internet.user_name
@@ -28,14 +28,16 @@ end
   User.create(firstname: firstname, lastname: lastname, username: username, telephone_number: telephone_number, address: address, email: email, password: password)
 end
 
-for i in (1..5)
+for i in (1..10)
   LineItem.create(shopping_cart: ShoppingCart.find(i), product: Product.find(i), quantity: 1)
 end
 
-for i in (1..5)
+for i in (1..20)
   Order.create(user: User.find(i), orderstatus: 0)
 end
 
 for i in (1..5)
   LineItem.create(order: Order.find(i), product: Product.find(i), quantity: 1)
 end
+
+Admin.create(firstname:"Admin", lastname:"Manager", username:"Admin", email:"admin@gmail.com", password:"123456")

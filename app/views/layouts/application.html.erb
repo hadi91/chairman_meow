@@ -42,7 +42,7 @@
                 <%= f.submit 'Search', class: 'btn btn-default' %>
               <% end %> -->
               <%= form_tag meow_products_path, method: :get do %>
-                <%= text_field_tag :search, 'Looking for a specific breed?', class: 'form-control' %>
+                <%= text_field_tag :search, params[:search], placeholder: 'Looking for a specific breed?', class: 'form-control' %>
                 <%= submit_tag 'Search', class: 'btn btn-default' %>
               <% end %>
             </div>
@@ -61,6 +61,7 @@
             <% end %>
             <% if admin_signed_in? %>
               <li><%= link_to "Admin sign up", new_admin_registration_path %></li>
+              <li><%= link_to "All Orders", admin_orders_path %></li>
             <% end %>
 
             <!-- <li class="dropdown">
