@@ -1,4 +1,6 @@
 class Order < ApplicationRecord
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
 
   belongs_to :user
 
@@ -18,4 +20,18 @@ class Order < ApplicationRecord
     "Cancelled":          8
   }
 
+  scope :neworders,       ->{ where(orderstatus:0)}
+  scope :pendingpayment,  ->{ where(orderstatus:1)}
+  scope :paymentapproved, ->{ where(orderstatus:2)}
+  scope :awaitingpickup,  ->{ where(orderstatus:3)}
+  scope :shipped,         ->{ where(orderstatus:4)}
+  scope :delivered,       ->{ where(orderstatus:5)}
+  scope :disputed,        ->{ where(orderstatus:6)}
+  scope :refunded,        ->{ where(orderstatus:7)}
+  scope :cancelled,       ->{ where(orderstatus:8)}
+
+
+  #def self.search(search)
+  #  where("orderstatus ILIKE ?", "%#{search}%")
+  #end
 end

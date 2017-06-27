@@ -1,0 +1,32 @@
+<div class="dropdown">
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    Order Status
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+    <li><%= link_to "All Orders", admin_orders_path %></li>
+    <li><%= link_to "New Orders", neworders_admin_orders_path %></li>
+    <li><%= link_to "Pending Payment", pendingpayment_admin_orders_path %></li>
+    <li><%= link_to "Payment Approved", paymentapproved_admin_orders_path %></li>
+    <li><%= link_to "Awaiting Pickup", awaitingpickup_admin_orders_path %></li>
+    <li><%= link_to "Shipped", shipped_admin_orders_path %></li>
+    <li><%= link_to "Delivered", delivered_admin_orders_path %></li>
+    <li><%= link_to "Disputed", disputed_admin_orders_path %></li>
+    <li><%= link_to "Refunded", refunded_admin_orders_path %></li>
+    <li><%= link_to "Cancelled", cancelled_admin_orders_path %></li>
+  </ul>
+</div>
+
+
+<%= form_tag admin_orders_path, method: :get do %>
+<%= text_field_tag :search, params[:search], placeholder: "Search Orders" %>
+<%= button_tag "Search" %>
+<% end %>
+<hr>
+
+<% @orders.each do |order| %>
+<p>Order No.<%= order.id %></p>
+<p>Made by <%= order.user.username %></p>
+<%= link_to "View this order", admin_order_path(order) %>
+<hr>
+<% end %>

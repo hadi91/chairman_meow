@@ -20,7 +20,20 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :orders, except: [:new, :create, :destroy]
+    resources :orders, except: [:new, :create, :destroy] do
+      collection do
+        get :neworders
+        get :pendingpayment
+        get :paymentapproved
+        get :awaitingpickup
+        get :shipped
+        get :delivered
+        get :disputed
+        get :refunded
+        get :cancelled
+      end
+    end
+
     resources :products
   end
 

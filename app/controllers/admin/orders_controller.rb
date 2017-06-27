@@ -1,13 +1,9 @@
 class Admin::OrdersController < ApplicationController
-  # before_action :require_admin
-  before_action :find_order, except: [:index]
+
+  before_action :find_order, only: [:show, :edit, :update]
 
   def index
     @orders = Order.all.order("created_at ASC")
-  end
-
-  def show
-    @lineitems = LineItem.where(order: @order)
   end
 
   def edit
@@ -21,6 +17,46 @@ class Admin::OrdersController < ApplicationController
     end
   end
 
+  def show
+    @lineitems = LineItem.where(order: @order)
+  end
+
+  def neworders
+    @orders = Order.neworders
+  end
+
+  def pendingpayment
+    @orders = Order.pendingpayment
+  end
+
+  def paymentapproved
+    @orders = Order.paymentapproved
+  end
+
+  def awaitingpickup
+    @orders = Order.awaitingpickup
+  end
+
+  def shipped
+    @orders = Order.shipped
+  end
+
+  def delivered
+    @orders = Order.delivered
+  end
+
+  def disputed
+    @orders = Order.disputed
+  end
+
+  def refunded
+    @orders = Order.refunded
+  end
+
+  def cancelled
+    @orders = Order.cancelled
+  end
+
   private
 
   def order_params
@@ -31,9 +67,4 @@ class Admin::OrdersController < ApplicationController
     @order = Order.find(params[:id])
   end
 
-  # def require_admin
-  #   unless current_user.is_admin?
-  #     redirect_to root_path
-  #   end
-  # end
 end

@@ -78,3 +78,6 @@ gem 'simple_form'
 gem 'jquery-rails'
 # Official Sass port of Bootstrap 2 and 3.
 gem 'bootstrap-sass'
+# Use elasticsearch as application search engine
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
