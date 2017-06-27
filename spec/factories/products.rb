@@ -4,7 +4,7 @@ FactoryGirl.define do
     dob "2017-01-01"
     description "description1"
     price 450.99
-    gender 1
+    gender 'Male'
     quantity 1
 
     trait :invalid do

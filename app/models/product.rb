@@ -11,10 +11,19 @@ class Product < ApplicationRecord
   validates :gender,      presence: true
   validates :quantity,    presence: true
 
-
   enum gender: {
     "Female": 0,
     "Male": 1
   }
 
+  scope :premium, -> { where("price > ?", 3000) }
+
+  def self.search(search_term)
+    if search_term
+      search_term.downcase!
+      where('breed ILIKE ?', "%#{search_term}%")
+    else
+      all
+    end
+  end
 end

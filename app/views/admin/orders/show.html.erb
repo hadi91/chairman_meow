@@ -5,7 +5,7 @@
 <p>Your order has <%= @order.line_items.count %> items </p>
 <hr>
 
-<%= @lineitems.each do |lineitem| %>
+<% @lineitems.each do |lineitem| %>
 <p><%= lineitem.product.breed %></p>
 <p><%= lineitem.product.gender %></p>
 <p><%= lineitem.product.dob %></p>
