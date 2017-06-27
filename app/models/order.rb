@@ -1,7 +1,5 @@
 class Order < ApplicationRecord
-  include Elasticsearch::Model
-  include Elasticsearch::Model::Callbacks
-
+  
   belongs_to :user
 
   has_many :line_items, dependent: :destroy
