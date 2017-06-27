@@ -80,3 +80,5 @@ gem 'jquery-rails'
 gem 'bootstrap-sass'
 #This gem provides a simple and extremely flexible way to upload files from Ruby applications.
 gem 'carrierwave'
+#Resizing of images
+gem 'mini_magick'

@@ -31,6 +31,9 @@ class Admin::ProductsController < ApplicationController
 
   def update
     if @product.update(product_params)
+      params[:product_images]['image'].each do |a|
+        @product_image = @product.product_images.create!(:image => a, :product_id => @product.id)
+      end
       redirect_to admin_product_path(@product)
     else
       render 'edit'

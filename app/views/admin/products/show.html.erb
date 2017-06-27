@@ -1,11 +1,9 @@
 <%= link_to "All Products", admin_products_path %>
-
+<br>
+<%= render partial: 'carousel' %>
 <p><%= @product.breed %></p>
 <p><%= @product.gender %></p>
 <p><%= @product.dob %></p>
 <p><%= @product.quantity %></p>
 <p><%= @product.description %></p>
 <p>SGD$<%= @product.price %></p>
-<% @product_images.each do |image_form| %>
-<%= image_tag image_form.image %>
-<% end %>
