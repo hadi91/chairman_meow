@@ -7,11 +7,15 @@ class Admin::ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    @product_image = @product.product_images.build
   end
 
   def create
     @product = Product.new(product_params)
     if @product.save
+      params[:product_images]['image'].each do |a|
+        @product_image = @product.product_images.create!(:image => a, :product_id => @product.id)
+      end
       redirect_to admin_product_path(@product)
     else
       render 'new'
@@ -19,6 +23,7 @@ class Admin::ProductsController < ApplicationController
   end
 
   def show
+    @product_images = @product.product_images.all
   end
 
   def edit
@@ -26,6 +31,9 @@ class Admin::ProductsController < ApplicationController
 
   def update
     if @product.update(product_params)
+      params[:product_images]['image'].each do |a|
+        @product_image = @product.product_images.create!(:image => a, :product_id => @product.id)
+      end
       redirect_to admin_product_path(@product)
     else
       render 'edit'
@@ -40,7 +48,7 @@ class Admin::ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:breed, :dob, :description, :price, :gender, :quantity)
+    params.require(:product).permit(:breed, :dob, :description, :price, :gender, :quantity, product_images_attributes: [:id, :product_id, :images])
   end
 
   def find_product

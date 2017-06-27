@@ -1,5 +1,5 @@
 <h1>Edit Product</h1>
-<%= simple_form_for @product, url: admin_product_path, method: :put do |f| %>
+<%= simple_form_for @product, html: { multipart: true }, url: admin_product_path, method: :put do |f| %>
 <%= f.input :breed %>
 <br>
 <%= f.input :dob, label: "Date of Birth" %>
@@ -13,6 +13,11 @@
 <br>
 <%= f.label "Quantity" %>
 <%= f.select :quantity, [1,2,3,4,5]%>
+<br>
+<%= f.fields_for :product_images do |p| %>
+<%= p.label :image %>
+<%= p.file_field :image, multiple: true, name: "product_images[image][]" %>
+<% end %>
 <br>
 <%= f.submit %>
 <% end %>

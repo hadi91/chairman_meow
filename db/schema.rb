@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 20170621023352) do
 
   create_table "product_images", force: :cascade do |t|
     t.bigint "product_id", null: false
-    t.string "imageurl", null: false
+    t.string "image", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_product_images_on_product_id"
