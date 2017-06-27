@@ -4,6 +4,6 @@ RSpec.describe ProductImage, type: :model do
 
   it { should belong_to(:product) }
 
-  it { should validate_presence_of(:imageurl) }
+  it { should validate_presence_of(:image) }
 
 end
