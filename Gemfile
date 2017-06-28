@@ -84,7 +84,5 @@ gem 'carrierwave'
 #Resizing of images
 gem 'mini_magick'
 
-# Use elasticsearch as application search engine
-gem 'elasticsearch-model'
-gem 'elasticsearch-rails'
-
+# Use braintree for payments
+gem 'braintree', '~> 2.76.0'
