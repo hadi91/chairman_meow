@@ -1,26 +1,11 @@
 <h1>New Product</h1>
 
-<%= simple_form_for @product, html: { multipart: true }, url: admin_products_path, method: :post do |f| %>
-<%= f.input :breed %>
-<br>
-<%= f.input :dob, label: "Date of Birth" %>
-<br>
-<%= f.input :description %>
-<br>
-<%= f.input :price %>
-<br>
-<%= f.label "Gender" %>
-<%= f.select :gender, ["Male", "Female"]%>
-<br>
-<%= f.label "Quantity" %>
-<%= f.select :quantity, [1,2,3,4,5]%>
-<br>
-<%= f.fields_for :product_images do |p| %>
-<%= p.label :image %>
-<%= p.file_field :image, multiple: true, name: "product_images[image][]" %>
-<% end %>
-<br>
-<%= f.submit %>
+<%= simple_form_for @product_form, html: { multipart: true }, url: admin_products_path do |f| %>
+
+  <%= render partial: 'partials/productform', locals: {f: f} %>
+
+  <br>
+  <%= f.submit 'Create New Breed', class: 'btn btn-primary' %>
 <% end %>
 
-<%= link_to "Cancel", admin_products_path %>
+<%= button_to "Cancel", admin_products_path, method: :get, class: 'btn' %>

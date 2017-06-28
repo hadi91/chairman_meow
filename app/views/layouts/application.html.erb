@@ -41,7 +41,7 @@
                 <%= f.input :query, placeholder: 'Looking for a specific breed?', class: 'form-control', label: false %>
                 <%= f.submit 'Search', class: 'btn btn-default' %>
               <% end %> -->
-              <%= form_tag meow_products_path, method: :get do %>
+              <%= form_tag search_meow_products_path, method: :get do %>
                 <%= text_field_tag :search, params[:search], placeholder: 'Looking for a specific breed?', class: 'form-control' %>
                 <%= submit_tag 'Search', class: 'btn btn-default' %>
               <% end %>
