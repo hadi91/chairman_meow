@@ -11,6 +11,7 @@ class Admin::ProductsController < ApplicationController
   end
 
   def create
+    byebug
     @product_form = ProductForm.new(@product, product_params)
     if @product_form.save
       redirect_to admin_product_path(@product_form.product)
@@ -45,7 +46,7 @@ class Admin::ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product_form).permit(product_attributes: [:breed, :dob, :description, :price, :gender, :quantity, product_images_attributes: [:image]])
+    params.require(:product_form).permit(product_attributes: [:breed, :dob, :description, :price, :gender, :quantity, product_images_attributes: [:id, :image, :_destroy]])
   end
 
   def find_product

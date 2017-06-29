@@ -14,8 +14,10 @@
   <%= ff.select :quantity, [1,2,3,4,5]%>
   <br>
 
-  <%= ff.simple_fields_for :product_images do |fff| %>
-  <%= fff.label :image %>
-  <%= fff.file_field :image %>
+  <%= ff.simple_fields_for :product_images do |f3| %>
+    <%= render 'partials/product_image_fields', f: f3 %>
   <% end %>
+  <div>
+    <%= link_to_add_association 'Add image', ff, :product_images, partial: 'partials/product_image_fields' %>
+  </div>
 <% end %>

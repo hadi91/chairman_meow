@@ -1,6 +1,6 @@
 <h1>New Product</h1>
 
-<%= simple_form_for @product_form, html: { multipart: true }, url: admin_products_path do |f| %>
+<%= simple_form_for @product_form, url: admin_products_path do |f| %>
 
   <%= render partial: 'partials/productform', locals: {f: f} %>
 

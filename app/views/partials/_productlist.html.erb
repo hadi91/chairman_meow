@@ -3,7 +3,8 @@
   <div class="col-sm-6 col-md-4 row-eq-height">
     <div class="thumbnail">
       <% if product.product_images.count > 0 %>
-        <%= image_tag product.product_images.first.image %>
+        <%= image_tag product.product_images.first.image, size: '400' %>
+        <!-- TODO: find a way to set max height -->
       <% else %>
         <img src= "..." alt= "...">
       <% end %>

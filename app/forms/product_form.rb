@@ -10,9 +10,6 @@ class ProductForm
 
   def initialize(product, params = {})
     @product = product
-    if params.empty?
-      @product_images = @product.product_images.build
-    end
     super(params)
   end
 
