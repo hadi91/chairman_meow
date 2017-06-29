@@ -1,0 +1,5 @@
+<div class="nested-fields">
+  <%= f.file_field :image %>
+  <%= image_tag(f.object.image, size: '200') if f.object.image? %>
+  <%= link_to_remove_association 'Remove Image', f %>
+</div>

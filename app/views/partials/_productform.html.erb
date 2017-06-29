@@ -1,0 +1,23 @@
+<%= f.simple_fields_for :product do |ff| %>
+  <%= ff.input :breed %>
+  <br>
+  <%= ff.input :dob, label: "Date of Birth" %>
+  <br>
+  <%= ff.input :description %>
+  <br>
+  <%= ff.input :price %>
+  <br>
+  <%= ff.label "Gender" %>
+  <%= ff.select :gender, ["Male", "Female"]%>
+  <br>
+  <%= ff.label "Quantity" %>
+  <%= ff.select :quantity, [1,2,3,4,5]%>
+  <br>
+
+  <%= ff.simple_fields_for :product_images do |f3| %>
+    <%= render 'partials/product_image_fields', f: f3 %>
+  <% end %>
+  <div>
+    <%= link_to_add_association 'Add image', ff, :product_images, partial: 'partials/product_image_fields' %>
+  </div>
+<% end %>

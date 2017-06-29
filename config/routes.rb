@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   devise_for :users, :controllers => { omniauth_callbacks: "users/omniauth_callbacks" }
 
-  resources :products, only: [:index]
+  # resources :products, only: [:index]
   resources :payments, only: [:new, :show, :create]
 
   namespace :meow do
@@ -38,5 +38,5 @@ Rails.application.routes.draw do
     resources :products
   end
 
-  root "products#index"
+  root "meow/products#index"
 end

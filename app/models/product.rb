@@ -2,7 +2,7 @@ class Product < ApplicationRecord
 
   has_many :line_items,     dependent: :destroy
   has_many :product_images, dependent: :destroy
-  accepts_nested_attributes_for :product_images
+  accepts_nested_attributes_for :product_images, reject_if: :all_blank, allow_destroy: true
 
   validates :breed,       presence: true
   validates :dob,         presence: true
