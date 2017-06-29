@@ -17,4 +17,10 @@ class Meow::ProductsController < ApplicationController
     @products = Product.premium
   end
 
+  def search
+    @products = Product.search(params[:search])
+    byebug
+    redirect_to root_path
+  end
+
 end

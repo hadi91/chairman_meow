@@ -1,6 +1,6 @@
 class Admin::ProductsController < ApplicationController
   before_action :authenticate_admin!
-  before_action :find_product, only: [:new, :create, :show, :edit, :update, :destroy]
+  before_action :find_product, except: [:index]
 
   def index
     @products = Product.all
@@ -11,7 +11,6 @@ class Admin::ProductsController < ApplicationController
   end
 
   def create
-    byebug
     @product_form = ProductForm.new(@product, product_params)
     if @product_form.save
       redirect_to admin_product_path(@product_form.product)
@@ -29,7 +28,6 @@ class Admin::ProductsController < ApplicationController
   end
 
   def update
-    byebug
     @product_form = ProductForm.new(@product, product_params)
     if @product_form.save
       redirect_to admin_product_path(@product)
@@ -56,4 +54,5 @@ class Admin::ProductsController < ApplicationController
       @product = Product.new
     end
   end
+
 end
