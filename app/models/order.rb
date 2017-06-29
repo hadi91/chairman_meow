@@ -1,5 +1,6 @@
 class Order < ApplicationRecord
-  
+  after_initialize :set_default
+
   belongs_to :user
 
   has_many :line_items, dependent: :destroy
@@ -28,8 +29,10 @@ class Order < ApplicationRecord
   scope :refunded,        ->{ where(orderstatus:7)}
   scope :cancelled,       ->{ where(orderstatus:8)}
 
+  private
 
-  #def self.search(search)
-  #  where("orderstatus ILIKE ?", "%#{search}%")
-  #end
+  def set_default
+    self.orderstatus ||= 0
+  end
+
 end

@@ -32,12 +32,4 @@ for i in (1..10)
   LineItem.create(shopping_cart: ShoppingCart.find(i), product: Product.find(i), quantity: 1)
 end
 
-for i in (1..20)
-  Order.create(user: User.find(i), orderstatus: 0)
-end
-
-for i in (1..5)
-  LineItem.create(order: Order.find(i), product: Product.find(i), quantity: 1)
-end
-
 Admin.create(firstname:"Admin", lastname:"Manager", username:"Admin", email:"admin@gmail.com", password:"123456")

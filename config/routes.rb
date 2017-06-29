@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   resources :payments, only: [:new, :show, :create]
 
   namespace :meow do
-    #resources :orders, except: [:edit, :update]
     resources :products, only: [:index, :show] do
       collection do
         get 'newest'
@@ -18,6 +17,7 @@ Rails.application.routes.draw do
     end
     resource :shopping_cart, except: [:new, :create]
     resource :line_item, only: [:create, :destroy, :update]
+    resources :orders, only: [:index, :show]
   end
 
   namespace :admin do

@@ -11,6 +11,7 @@ class PaymentsController < ApplicationController
 
   def new
     @client_token = Braintree::ClientToken.generate
+    @shopping_cart = current_user.shopping_cart
   end
 
   def show
@@ -46,15 +47,15 @@ class PaymentsController < ApplicationController
 
     if TRANSACTION_SUCCESS_STATUSES.include? status
       result_hash = {
-        :header => "Sweet Success!",
+        :header => "Payment Success!",
         :icon => "success",
-        :message => "Your test transaction has been successfully processed. See the Braintree API response and try again."
+        :message => "Your test transaction has been successfully processed. Your order will be processed and you will be updated via email shortly."
       }
     else
       result_hash = {
-        :header => "Transaction Failed",
+        :header => "Payment Declined",
         :icon => "fail",
-        :message => "Your test transaction has a status of #{status}. See the Braintree API response and try again."
+        :message => "Your card has been rejected. Please pay your bills and stop spending money you dont have!"
       }
     end
   end
