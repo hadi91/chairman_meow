@@ -1,5 +1,6 @@
 class Order < ApplicationRecord
-  
+  after_initialize :set_default
+
   belongs_to :user
 
   has_many :line_items, dependent: :destroy
@@ -28,8 +29,18 @@ class Order < ApplicationRecord
   scope :refunded,        ->{ where(orderstatus:7)}
   scope :cancelled,       ->{ where(orderstatus:8)}
 
+  def total_price
+    total_price = line_items.map do |line_item|
+      line_item.product.price * line_item.quantity
+    end.reduce(:+)
 
-  #def self.search(search)
-  #  where("orderstatus ILIKE ?", "%#{search}%")
-  #end
+    total_price.nil? ? 0 : '%.2f' % total_price
+  end
+
+  private
+
+  def set_default
+    self.orderstatus ||= 0
+  end
+
 end

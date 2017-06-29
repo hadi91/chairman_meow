@@ -2,10 +2,10 @@
   <h2>You don't seem to have added any cats yet! <%= link_to 'Click here to shop for some!', meow_products_path %></h2>
 <% else %>
   <div class="panel panel-default">
-    <div class="panel-heading"><h1>Cats in your cart</h1></div>
-    <!-- <div class="panel-body">
-    <p>...</p>
-  </div> -->
+    <div class="panel-heading">
+      <h1>Cats in your cart</h1>
+    </div>
+
 
   <!-- Table -->
   <table class="table cartlist-tbl">
@@ -42,7 +42,13 @@
         <td></td>
         <td></td>
         <td></td>
-        <td>Checkout cart</td>
+        <td>
+          <% if current_user %>
+          <button type="button" class="btn btn-default"><%= link_to "Checkout cart", new_payment_path %></button>
+          <% else %>
+          <p class="btn btn-danger disabled">Checkout cart</p>
+          <% end %>
+        </td>
       </tr>
     </table>
   </div>

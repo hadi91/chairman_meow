@@ -1,0 +1,140 @@
+<div class="wrapper">
+  <div class="response container">
+    <div class="content">
+      <% if @result %>
+        <h1><%= @result[:header] %></h1>
+        <section>
+          <p><%= @result[:message] %></p>
+        </section>
+      <% else %>
+        <section>
+          <p>Test another transaction or see the Braintree API response.</p>
+        </section>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<hr>
+<div class="container">
+  <article class="content compact">
+    <section>
+      <h3>Transaction Receipt for Order No.</h3>
+
+      <table cellpadding="0" cellspacing="0">
+        <tbody>
+          <tr>
+            <th>Transaction ID</th>
+            <td><%= @transaction.id %></td>
+          </tr>
+          <tr>
+            <th>Transaction Type</th>
+            <td><%= @transaction.type %></td>
+          </tr>
+          <tr>
+            <th>Amount Paid</th>
+            <td><%= @transaction.amount %></td>
+          </tr>
+          <tr>
+            <th>Order Status</th>
+            <td><%= @transaction.status %></td>
+          </tr>
+          <tr>
+            <th>created_at</th>
+            <td><%= @transaction.created_at %></td>
+          </tr>
+          <tr>
+            <th>updated_at</th>
+            <td><%= @transaction.updated_at %></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h3>Payment</h3>
+
+      <table cellpadding="0" cellspacing="0">
+        <tbody>
+          <tr>
+            <th>Transaction Token</th>
+            <td><%= @transaction.credit_card_details.token %></td>
+          </tr>
+          <tr>
+            <th>Paid with card ending with</th>
+            <td><%= @transaction.credit_card_details.last_4 %></td>
+          </tr>
+          <tr>
+            <th>Card Type</th>
+            <td><%= @transaction.credit_card_details.card_type %></td>
+          </tr>
+          <tr>
+            <th>Card Expiration Date</th>
+            <td><%= @transaction.credit_card_details.expiration_date %></td>
+          </tr>
+          <tr>
+            <th>Cardholder Name</th>
+            <td><%= @transaction.credit_card_details.cardholder_name %></td>
+          </tr>
+          <tr>
+            <th>Customer Location</th>
+            <td><%= @transaction.credit_card_details.customer_location %></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <% if @transaction.customer_details.id %>
+      <section>
+        <h5>Customer</h5>
+
+        <table cellpadding="0" cellspacing="0">
+          <tbody>
+            <tr>
+              <th>id</th>
+              <td><%= @transaction.customer_details.id %></td>
+            </tr>
+            <tr>
+              <th>first_name</th>
+              <td><%= @transaction.customer_details.first_name %></td>
+            </tr>
+            <tr>
+              <th>last_name</th>
+              <td><%= @transaction.customer_details.last_name %></td>
+            </tr>
+            <tr>
+              <th>email</th>
+              <td><%= @transaction.customer_details.email %></td>
+            </tr>
+            <tr>
+              <th>company</th>
+              <td><%= @transaction.customer_details.company %></td>
+            </tr>
+            <tr>
+              <th>website</th>
+              <td><%= @transaction.customer_details.website %></td>
+            </tr>
+            <tr>
+              <th>phone</th>
+              <td><%= @transaction.customer_details.phone %></td>
+            </tr>
+            <tr>
+              <th>fax</th>
+              <td><%= @transaction.customer_details.fax %></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    <% end %>
+
+    <hr>
+    <section>
+      <p class="center small">Integrate with the Braintree SDK for a secure and seamless checkout</p>
+    </section>
+    <section>
+      <a class="button secondary full" href="https://developers.braintreepayments.com/guides/drop-in" target="_blank">
+        <span>See the Docs</span>
+      </a>
+    </section>
+  </article>
+</div><!--closes the container-->

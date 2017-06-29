@@ -51,6 +51,9 @@
             <% if !admin_signed_in? %>
               <li><%= link_to 'My cart', meow_shopping_cart_path %></li>
             <% end %>
+            <% if user_signed_in? %>
+              <li><%= link_to 'My orders', meow_orders_path %></li>
+            <% end %>
             <% if user_signed_in? || admin_signed_in? %>
               <li><%= link_to "My profile", edit_user_registration_path(@user) %></li>
               <li><%= link_to "Log out", destroy_user_session_path, :method => "delete", data: { confirm:"ARE YOU SURE?!?" }%></li>

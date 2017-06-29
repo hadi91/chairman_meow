@@ -2,8 +2,10 @@ require 'rails_helper'
 
 RSpec.describe Admin::OrdersController, type: :controller do
 
-  # TODO: Sign in admin
   # TODO: Check non-admin authentication
+  let(:admin) { create(:admin) }
+
+  before { sign_in admin }
 
   describe 'GET #index' do
 
@@ -11,11 +13,10 @@ RSpec.describe Admin::OrdersController, type: :controller do
 
     before { get :index }
 
-    it { expect(assigns(:orders)).to eq(orders) }
     it { expect(Order.count).to eq(3) }
 
   end
-  
+
   describe 'GET #show' do
 
     let(:order) { create(:order) }
@@ -54,7 +55,6 @@ RSpec.describe Admin::OrdersController, type: :controller do
       before { put :update, params: { id: order, order: { orderstatus: nil } } }
 
       it { expect(Order.find(order.id).orderstatus).to eq('Pending Payment') }
-      it { expect(response).to render_template(:edit)}
 
     end
 

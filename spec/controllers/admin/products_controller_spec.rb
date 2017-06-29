@@ -2,8 +2,11 @@ require 'rails_helper'
 
 RSpec.describe Admin::ProductsController, type: :controller do
 
-  # TODO: Sign in admin
   # TODO: check non-admin authentication for all actions
+
+  let(:admin) { create(:admin) }
+
+  before { sign_in admin }
 
   describe 'GET #index' do
 
