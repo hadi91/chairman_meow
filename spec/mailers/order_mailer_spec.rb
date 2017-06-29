@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe OrderMailer, type: :mailer do
   describe "update_order_status" do
-    let(:mail) { OrderMailer.update_order_status }
+    let(:mail) { OrderMailer.update_order_status(order) }
 
     it "renders the headers" do
       expect(mail.subject).to eq("Update order status")
