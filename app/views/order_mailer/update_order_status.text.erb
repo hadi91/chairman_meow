@@ -1,8 +1,7 @@
-<%= 'Order Status for Item #{}' %>
+<%= 'Order Status for Cat Breed:' + @order.line_items.find_by(order_id: @order.id).product.breed %>
 
 Dear Beloved Cat Lover,
-<%= 'We would like to inform you that your order is now #{}'%>
-To view your order, please visit the order page at:
-
+<%= 'We would like to inform you that your order is now ' + @order.orderstatus + '.'%>
+To view your order, please visit the order page at: <%= link_to "Chairman Meow Orders", meow_orders_url %>
 Regards,
 Chairman Meow
