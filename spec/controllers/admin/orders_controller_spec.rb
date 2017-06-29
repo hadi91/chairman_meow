@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe Admin::OrdersController, type: :controller do
 
-  # TODO: Sign in admin
   # TODO: Check non-admin authentication
   let(:admin) { create(:admin) }
 
