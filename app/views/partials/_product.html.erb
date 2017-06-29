@@ -1,0 +1,32 @@
+  <% @products.each do |product| %>
+  <% if product.quantity > 0 %>
+    <div class="col-sm-6 col-md-4 row-eq-height card">
+      <div class="thumbnail">
+        <% if product.product_images.count > 0 %>
+        <%= image_tag product.product_images.first.image %>
+        <% else %>
+        <img src= "..." alt= "...">
+        <% end %>
+        <div class="caption">
+          <h3>
+            <%= product.breed %>
+            <div class="textbox">
+              <small>
+                <p>
+                  <%= product.description %>
+                </p>
+              </small>
+            </div>
+          </h3>
+          <hr>
+          <p>Price: $<%= product.price %></p>
+          <button class="btn btn-default" role="button">View More</button>
+          <% if admin_signed_in? %>
+          <p><%= button_to "Edit", edit_admin_product_path(product), method: :get, class: 'btn btn-primary', role: 'button' %></p>
+          <p><%= button_to "Delete", admin_product_path(product), method: :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-primary', role: 'button' %></p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <% end %>
