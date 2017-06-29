@@ -20,6 +20,17 @@ class PaymentsController < ApplicationController
   end
 
   def create
+    @order = Order.create(user: current_user)
+    @shopping_cart = current_user.shopping_cart
+    @line_items = @shopping_cart.line_items
+
+    @line_items.each do |lineitem|
+      lineitem.order_id = @order.id
+      lineitem.save
+      lineitem.shopping_cart_id = nil
+      lineitem.save
+    end
+
     amount = params["amount"] # In production you should not take amounts directly from clients
     nonce = params["payment_method_nonce"]
 
@@ -31,9 +42,13 @@ class PaymentsController < ApplicationController
       }
     )
 
-    if result.success? || result.transaction
+    if result.success? && result.transaction
+      @order.orderstatus = 2
+      @order.save
       redirect_to payment_path(result.transaction.id)
     else
+      @order.orderstatus = 1
+      @order.save
       error_messages = result.errors.map { |error| "Error: #{error.code}: #{error.message}" }
       flash[:error] = error_messages
       redirect_to new_payment_path

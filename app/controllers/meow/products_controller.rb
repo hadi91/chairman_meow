@@ -17,5 +17,4 @@ class Meow::ProductsController < ApplicationController
     @products = Product.premium
   end
 
-
 end

@@ -29,6 +29,14 @@ class Order < ApplicationRecord
   scope :refunded,        ->{ where(orderstatus:7)}
   scope :cancelled,       ->{ where(orderstatus:8)}
 
+  def total_price
+    total_price = line_items.map do |line_item|
+      line_item.product.price * line_item.quantity
+    end.reduce(:+)
+
+    total_price.nil? ? 0 : '%.2f' % total_price
+  end
+
   private
 
   def set_default

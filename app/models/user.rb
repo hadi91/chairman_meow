@@ -1,6 +1,6 @@
 class User < ApplicationRecord
 
-  after_create :create_shopping_cart, :create_order
+  after_create :create_shopping_cart
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
@@ -45,10 +45,6 @@ class User < ApplicationRecord
 
   def create_shopping_cart
     ShoppingCart.create(user: self)
-  end
-
-  def create_order
-    Order.create(user: self)    
   end
 
 end

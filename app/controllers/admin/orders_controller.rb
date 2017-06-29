@@ -1,5 +1,5 @@
 class Admin::OrdersController < ApplicationController
-
+  before_action :authenticate_admin!
   before_action :find_order, only: [:show, :edit, :update]
 
   def index
@@ -12,8 +12,6 @@ class Admin::OrdersController < ApplicationController
   def update
     if @order.update(order_params)
       redirect_to admin_order_path(@order)
-    else
-      render :edit
     end
   end
 
