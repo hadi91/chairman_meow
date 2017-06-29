@@ -10,8 +10,8 @@ class OrderMailer < ApplicationMailer
     mail(to: @order.user.email, subject: 'Order has been updated')
   end
 
-  # def order_confirmation(order)
-  #   @order = order
-  #   mail(to: @order.user.email, subject: 'Order Confirmation from Chairman Meow')
-  # end
+  def order_confirmation(order)
+    @order = order
+    mail(to: @order.user.email, subject: 'Order Confirmation from Chairman Meow')
+  end
 end

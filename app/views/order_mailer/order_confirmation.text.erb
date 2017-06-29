@@ -1,0 +1,10 @@
+<%= 'Your Order for Cat Breed:' + @order.line_items.find_by(order_id: @order.id).product.breed %>
+
+Dear Beloved Cat Lover,
+
+Congratulations! Your order has been successfully placed. We will update you again once the order status has been updated
+
+To view or keep track of your order, please visit the product's order page at: <%= link_to "Chairman Meow Orders", meow_orders_url %>
+
+Regards,
+Chairman Meow
