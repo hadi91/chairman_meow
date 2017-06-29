@@ -5,9 +5,13 @@ class OrderMailer < ApplicationMailer
   #
   #   en.order_mailer.update_order_status.subject
   #
-  def update_order_status
-    @greeting = "Hi"
-
-    mail to: "to@example.org"
+  def update_order_status(order)
+    @order = order
+    mail(to: @order.user.email, subject: 'Order has been updated')
   end
+
+  # def order_confirmation(order)
+  #   @order = order
+  #   mail(to: @order.user.email, subject: 'Order Confirmation from Chairman Meow')
+  # end
 end

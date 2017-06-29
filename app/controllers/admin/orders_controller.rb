@@ -11,6 +11,7 @@ class Admin::OrdersController < ApplicationController
 
   def update
     if @order.update(order_params)
+      OrderMailer.update_order_status(@order).deliver_now
       redirect_to admin_order_path(@order)
     else
       render :edit
