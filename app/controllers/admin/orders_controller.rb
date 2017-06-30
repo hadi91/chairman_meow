@@ -56,6 +56,19 @@ class Admin::OrdersController < ApplicationController
     @orders = Order.cancelled
   end
 
+  def charts
+    @lineitems = LineItem.where.not(order: nil)
+    
+    @product_count = {}
+    @lineitems.each do |lineitem|
+      unless @product_count.has_key?(lineitem.product.breed)
+        @product_count[lineitem.product.breed] = 0
+      end
+
+      @product_count[lineitem.product.breed] += lineitem.quantity
+    end
+  end
+
   private
 
   def order_params
