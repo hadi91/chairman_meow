@@ -58,7 +58,7 @@ class Admin::OrdersController < ApplicationController
 
   def charts
     @lineitems = LineItem.where.not(order: nil)
-    
+
     @product_count = {}
     @lineitems.each do |lineitem|
       unless @product_count.has_key?(lineitem.product.breed)
@@ -67,6 +67,8 @@ class Admin::OrdersController < ApplicationController
 
       @product_count[lineitem.product.breed] += lineitem.quantity
     end
+
+    @product_count = @product_count.sort_by { |key, value| value }
   end
 
   private
