@@ -32,6 +32,7 @@ Rails.application.routes.draw do
         get :disputed
         get :refunded
         get :cancelled
+        get :charts
       end
     end
 

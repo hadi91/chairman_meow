@@ -90,3 +90,6 @@ gem 'omniauth-facebook'
 
 # Dynamic nested forms using jQuery made easy
 gem 'cocoon'
+
+# Use chartkick to create beautiful charts with one line of JavaScript
+gem 'chartkick'
