@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :product do
     breed "breed1"
-    dob "2017-01-01"
+    dob Date.today
     description "description1"
     price 450.99
     gender 'Male'

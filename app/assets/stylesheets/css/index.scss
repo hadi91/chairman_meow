@@ -1,10 +1,11 @@
 body {
-  font-family: Georgia, "Times New Roman", Serif;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
 }
 
 .navbar-default li.dropdown li:hover .sub-menu {
   visibility: visible;
 }
+
 
 table {
   width: 100%;
@@ -23,4 +24,29 @@ table {
 .carousel-inner > .item > a > img {
   margin: auto;
   max-height: 500px;
+}
+
+.img-responsive {
+  height: 100px;
+  text-align: center;
+  margin-left:70px;
+}
+
+small {
+  word-wrap: break-word;
+  padding: 5px;
+}
+
+.textbox {
+  word-wrap: break-word;
+  padding: 10px;
+}
+
+#pick-breed {
+  text-align: center;
+  margin: 30px;
+}
+footer {
+  bottom: 0;
+  width: 100%;
 }

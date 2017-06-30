@@ -54,6 +54,7 @@ GEM
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
+    cocoon (1.2.10)
     coderay (1.1.1)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
@@ -288,6 +289,7 @@ DEPENDENCIES
   braintree (~> 2.76.0)
   byebug
   carrierwave
+  cocoon
   coffee-rails (~> 4.2)
   devise
   dotenv-rails
