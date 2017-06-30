@@ -1,0 +1,68 @@
+<div class="container">
+  <div id="main_area">
+    <!-- Slider -->
+    <div class="row">
+      <div class="col-xs-12" id="slider">
+        <!-- Top part of the slider -->
+        <div class="row">
+          <div class="col-sm-8" id="carousel-bounding-box">
+            <div class="carousel slide" id="myCarousel">
+              <!-- Carousel items -->
+              <div class="carousel-inner">
+                <div class="active item" data-slide-number="0">
+                  <%= image_tag "japanese-bobtail-1.jpg"%></div>
+
+                  <div class="item" data-slide-number="1">
+                    <%= image_tag "japanese-bobtail-2.jpg"%></div>
+
+                    <div class="item" data-slide-number="2">
+                      <%= image_tag "japanese-bobtail-3.jpg"%></div>
+                    </div><!-- Carousel nav -->
+                    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                      <span class="glyphicon glyphicon-chevron-left"></span>
+                    </a>
+                    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                      <span class="glyphicon glyphicon-chevron-right"></span>
+                    </a>
+                  </div>
+                </div>
+
+                <div class="col-sm-4" id="carousel-text"></div>
+
+
+                <div class="col-md-3 col-xs-12">
+                  <div class="well">
+                    Birthdate: <%= @product.dob %> <br>
+                    Price: $<%= @product.price %> <br>
+                    Gender: <%= @product.gender %> <br>
+                    Quantity available: <%= @product.quantity %>
+                  </div>
+                  <div class="well">
+                    <h2>Want this breed?</h2>
+
+                    <%= simple_form_for @line_item, url: meow_line_item_path(product_id: @product), method: :post do |f| %>
+                    <%= f.input :quantity, collection: 1..@product.quantity %>
+                    <%= f.submit 'Add to cart', class: 'btn btn-primary' %>
+                    <% end %>
+                  </div>
+                </div>
+              </div><!--/Slider-->
+
+              <div class="row hidden-xs" id="slider-thumbs">
+                <!-- Bottom switcher of slider -->
+                <ul class="hide-bullets">
+                  <li class="col-sm-2">
+                    <a class="thumbnail" id="carousel-selector-0"><%= image_tag "japanese-bobtail-1.jpg"%></a>
+                  </li>
+
+                  <li class="col-sm-2">
+                    <a class="thumbnail" id="carousel-selector-1"><%= image_tag "japanese-bobtail-2.jpg"%></a>
+                  </li>
+
+                  <li class="col-sm-2">
+                    <a class="thumbnail" id="carousel-selector-2"><%= image_tag "japanese-bobtail-3.jpg"%></a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+</div>
