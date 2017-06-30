@@ -41,7 +41,6 @@ class User < ApplicationRecord
     input.where("firstname LIKE ?", "%#{search}%")
   end
 
-
   private
 
   def create_shopping_cart

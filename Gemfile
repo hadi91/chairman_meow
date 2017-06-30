@@ -5,9 +5,9 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.1'
+# Use for env variables
 gem 'dotenv-rails'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
@@ -29,8 +29,6 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-# Use omniauth-facebook for fb log in feature
-gem 'omniauth-facebook'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -84,7 +82,11 @@ gem 'carrierwave'
 #Resizing of images
 gem 'mini_magick'
 
-# Use elasticsearch as application search engine
-gem 'elasticsearch-model'
-gem 'elasticsearch-rails'
+# Use braintree for payments
+gem 'braintree', '~> 2.76.0'
 
+# Use omniauth-facebook for fb log in feature
+gem 'omniauth-facebook'
+
+# Dynamic nested forms using jQuery made easy
+gem 'cocoon'

@@ -1,24 +1,19 @@
 class Admin::ProductsController < ApplicationController
-  before_action :find_product, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_admin!
+  before_action :find_product, except: [:index]
 
   def index
     @products = Product.all
   end
 
   def new
-    @product = Product.new
-    @product_image = @product.product_images.build
+    @product_form = ProductForm.new(@product)
   end
 
   def create
-    @product = Product.new(product_params)
-    if @product.save
-      if params[:product_images]
-        params[:product_images]['image'].each do |a|
-          @product_image = @product.product_images.create!(:image => a, :product_id => @product.id)
-        end
-      end
-      redirect_to admin_product_path(@product)
+    @product_form = ProductForm.new(@product, product_params)
+    if @product_form.save
+      redirect_to admin_product_path(@product_form.product)
     else
       render 'new'
     end
@@ -29,15 +24,12 @@ class Admin::ProductsController < ApplicationController
   end
 
   def edit
+    @product_form = ProductForm.new(@product)
   end
 
   def update
-    if @product.update(product_params)
-      if params[:product_images]
-        params[:product_images]['image'].each do |a|
-          @product_image = @product.product_images.create!(:image => a, :product_id => @product.id)
-        end
-      end
+    @product_form = ProductForm.new(@product, product_params)
+    if @product_form.save
       redirect_to admin_product_path(@product)
     else
       render 'edit'
@@ -52,10 +44,15 @@ class Admin::ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:breed, :dob, :description, :price, :gender, :quantity, product_images_attributes: [:id, :product_id, :images])
+    params.require(:product_form).permit(product_attributes: [:breed, :dob, :description, :price, :gender, :quantity, product_images_attributes: [:id, :image, :_destroy]])
   end
 
   def find_product
-    @product = Product.find(params[:id])
+    if params[:id]
+      @product = Product.find(params[:id])
+    else
+      @product = Product.new
+    end
   end
+
 end

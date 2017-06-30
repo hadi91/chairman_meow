@@ -10,6 +10,12 @@
   <div class="row">
     <div class="col-md-5 col-md-offset-1">
       <h4>Order Status: <%= @order.orderstatus %></h4>
+
+      <%= simple_form_for @order, url: admin_order_path, method: :put do |f| %>
+      <%= f.select :orderstatus, ["New", "Pending Payment", "Payment Approved", "Awaiting Pickup", "Shipped", "Delivered", "Disputed", "Refunded", "Cancelled"] %>
+      <%= f.submit %>
+      <% end  %>
+
       <h4>This order has <%= @order.line_items.count %> items </h4>
     </div><!--closes orderstatus col-->
   </div><!--closes row-->

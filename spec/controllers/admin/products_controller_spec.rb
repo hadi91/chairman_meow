@@ -2,8 +2,11 @@ require 'rails_helper'
 
 RSpec.describe Admin::ProductsController, type: :controller do
 
-  # TODO: Sign in admin
   # TODO: check non-admin authentication for all actions
+
+  let(:admin) { create(:admin) }
+
+  before { sign_in admin }
 
   describe 'GET #index' do
 
@@ -26,20 +29,36 @@ RSpec.describe Admin::ProductsController, type: :controller do
 
   describe 'POST #create' do
 
-    before { post :create, params: { product: params } }
+    before { post :create, params: { product_form: params } }
 
-    context 'when product#save passes' do
+    context 'when product#save passes and no image is attached' do
 
-      let(:params) { attributes_for(:product) }
+      # # Attempt at testing product image addition
+      # let(:product_image_id) do
+      #   { '1498726150771': attributes_for(:product_image, :no_association) }
+      # end
+      # let(:product_image_hash) do
+      #   { product_images_attributes: product_image_id }
+      # end
+      # let(:params) do
+      #   { product_attributes: attributes_for(:product).merge(product_image_hash) }
+      # end
+
+      let(:params) do
+        { product_attributes: attributes_for(:product) }
+      end
 
       it { expect(Product.count).to eq(1) }
+      it { expect(Product.first).to have_attributes(attributes_for(:product)) }
       it { expect(response).to redirect_to admin_product_path(assigns(:product)) }
 
     end
 
     context 'when product#save fails' do
 
-      let(:params) { attributes_for(:product, :invalid) }
+      let(:params) do
+        { product_attributes: attributes_for(:product, :invalid) }
+      end
 
       it { expect(Product.count).to eq(0) }
       it { expect(response).to render_template(:new) }
@@ -74,7 +93,12 @@ RSpec.describe Admin::ProductsController, type: :controller do
 
     context 'when update is valid' do
 
-      before { put :update, params: { id: product, product: { breed: product.breed + 'Edited' } } }
+      # # alternative that does not work
+      # let(:product_attributes) { breed: product.breed + 'Edited' }
+      #
+      # before { put :update, params: { id: product, product_form: { product_attributes } } }
+
+      before { put :update, params: { id: product, product_form: { product_attributes: { breed: product.breed + 'Edited' } } } }
 
       it { expect(Product.find(product.id).breed.last(6)).to eq('Edited') }
       it { expect(response).to redirect_to admin_product_path(product) }
@@ -83,7 +107,7 @@ RSpec.describe Admin::ProductsController, type: :controller do
 
     context 'when update is invalid' do
 
-      before { put :update, params: { id: product, product: { breed: nil } } }
+      before { put :update, params: { id: product, product_form: { product_attributes: { breed: nil } } } }
 
       it { expect(response).to render_template(:edit) }
 

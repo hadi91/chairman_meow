@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <h1>Your Orders</h1>
+  </div>
+
+  <hr>
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+
+      <% @orders.each do |order| %>
+      <p>
+      <%= link_to "Order No.#{order.id}", meow_order_path(order) %>
+      </p>
+      <p><%= order.orderstatus %></p>
+      <p>Amount Paid: SGD$<%= order.total_price %></p>
+      <%= order.line_items.count %>
+      <% end %>
+
+    </div>
+  </div>
+</div>
