@@ -38,9 +38,7 @@
       </form>
       <ul class="nav navbar-nav navbar-right">
         <% if !admin_signed_in? %>
-          <li><%= link_to meow_shopping_cart_path, class: "cart-icon" do%>
-            <span class='glyphicon glyphicon-shopping-cart'></span>Cart
-            <% end %>
+          <li><%= link_to "My Cart", meow_shopping_cart_path, class: "cart-icon"%>
           </li>
         <% end %>
         <% if user_signed_in? || admin_signed_in? %>

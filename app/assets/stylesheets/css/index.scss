@@ -28,7 +28,8 @@ table {
 
 .img-responsive {
   height: 100px;
-  margin: 20px;
+  text-align: center;
+  margin-left:70px;
 }
 
 small {
@@ -39,4 +40,13 @@ small {
 .textbox {
   word-wrap: break-word;
   padding: 10px;
+}
+
+#pick-breed {
+  text-align: center;
+  margin: 30px;
+}
+footer {
+  bottom: 0;
+  width: 100%;
 }

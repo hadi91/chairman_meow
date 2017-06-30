@@ -1,5 +1,17 @@
 <div class="container">
-  <h1>Pick a breed!</h1>
+  <div class="row">
+    <div class="col-xs-4 col-xs-offset-4">
+      <%= image_tag "chairman_meow.png", class: "img-responsive" %>
+    </div>
+  </div>
+  <div class="row" id="slideshow">
+    <%= render partial: 'partials/product_slideshow' %>
+  </div>
+  <div class="row">
+    <div class="col-xs-4 col-xs-offset-4">
+      <h1 id="pick-breed">Pick a breed!</h1>
+    </div>
+  </div>
   <div class="row">
     <%= render partial: 'partials/product' %>
   </div>

@@ -18,12 +18,8 @@
     <% if alert %>
       <p class="alert alert-danger"><%= alert %></p>
     <% end %>
-    <div class="row">
-      <div class="col-md-3">
-        <%= image_tag "chairman_meow.png", class: "img-responsive" %>
-      </div>
-    </div>
+    
     <%= yield %>
-    <%= render partial: 'layouts/footer' %>
+        <%= render partial: 'layouts/footer' %>
   </body>
 </html>

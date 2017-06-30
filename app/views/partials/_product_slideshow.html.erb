@@ -1,25 +1,58 @@
-<div class="slideshow-container">
-
-<div class="mySlides fade">
-    <%= image_tag "cat-slideshow-1.jpg", style: "width:100%" %>
-  <div class="text">Caption Text</div>
-</div>
-
-<div class="mySlides fade">
-    <%= image_tag "cat-slideshow-2.jpg", style: "width:100%" %>
-  <div class="text">Caption Two</div>
-</div>
-
-<div class="mySlides fade">
-    <%= image_tag "cat-slideshow-2.jpg", style: "width:100%" %>
-  <div class="text">Caption Three</div>
-</div>
-
-</div>
-<br>
-
-<div style="text-align:center">
-  <span class="dot"></span>
-  <span class="dot"></span>
-  <span class="dot"></span>
+<div class="container">
+	<div class="row">
+		<!-- Carousel -->
+    	<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+			<!-- Indicators -->
+			<ol class="carousel-indicators">
+			  	<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+			    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+			    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+			</ol>
+			<!-- Wrapper for slides -->
+			<div class="carousel-inner">
+			    <div class="item active">
+			    	<%= image_tag "cat-slideshow-1.jpg", style: "width:100%"%>
+                    <!-- Static Header -->
+                    <div class="header-text hidden-xs">
+                        <div class="col-xs-12 text-center">
+                            <h2>
+                            	<span>Welcome to <strong>Chairman Meow!</strong></span>
+                            </h2>
+                            <br>
+                            <div class="">
+                                <a class="btn btn-theme btn-sm btn-min-block" href="#">Premium</a><a class="btn btn-theme btn-sm btn-min-block" href="#">Newest Additions</a></div>
+                        </div>
+                    </div><!-- /header-text -->
+			    </div>
+			    <div class="item">
+			    	<%= image_tag "cat-slideshow-2.jpg", style: "width:100%"%>
+			    	<!-- Static Header -->
+                    <div class="header-text hidden-xs">
+                        <div class="col-xs-12 text-center">
+                            <h2>
+                                <span>Checkout The Newest Additions!</span>
+                            </h2>
+                            <br>
+                            <div class="">
+                                <a class="btn btn-theme btn-sm btn-min-block" href="#">Premium</a><a class="btn btn-theme btn-sm btn-min-block" href="#">Newest Additions</a></div>
+                        </div>
+                    </div><!-- /header-text -->
+			    </div>
+			    <div class="item">
+			    	<%= image_tag "cat-slideshow-3.jpg", style: "width:100%"%>
+			    	<!-- Static Header -->
+                    <div class="header-text hidden-xs">
+                        <div class="col-xs-12 text-center">
+                            <h2>
+                                <span>We have the Premium Breeds that you've been looking for</span>
+                            </h2>
+                            <br>
+                            <div class="">
+                                <a class="btn btn-theme btn-sm btn-min-block" href="#">Premium</a><a class="btn btn-theme btn-sm btn-min-block" href="#">Newest Additions</a></div>
+                        </div>
+                    </div><!-- /header-text -->
+			    </div>
+			</div>
+		</div><!-- /carousel -->
+	</div>
 </div>

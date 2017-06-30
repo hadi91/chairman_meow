@@ -19,8 +19,8 @@
             </div>
           </h3>
           <hr>
-          <p>Price: $<%= product.price %></p>
-          <button class="btn btn-default" role="button">View More</button>
+          <p>  Price: $<%= product.price %></p>
+          <%= button_to "View More", meow_product_path(product), method: :get, class: 'btn btn-primary', role: 'button' %>
           <% if admin_signed_in? %>
           <p><%= button_to "Edit", edit_admin_product_path(product), method: :get, class: 'btn btn-primary', role: 'button' %></p>
           <p><%= button_to "Delete", admin_product_path(product), method: :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-primary', role: 'button' %></p>
