@@ -21,7 +21,6 @@ class PaymentsController < ApplicationController
 
   def create
     @order = Order.create(user: current_user)
-    OrderMailer.order_confirmation(@order).deliver_now
     @shopping_cart = current_user.shopping_cart
     @line_items = @shopping_cart.line_items
 

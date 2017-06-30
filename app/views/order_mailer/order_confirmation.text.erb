@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <%= 'Your Order for Cat Breed:' + @product_breed %>
+=======
+<%= 'Your Order for Cat Breed:' + @order.line_items.find_by(order_id: @order.id).product.breed %>
+>>>>>>> e7faf76309b6a9f0a96e91d82eea4466089b60b9
 
 Dear Beloved Cat Lover,
 
