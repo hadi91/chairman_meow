@@ -5,17 +5,26 @@
 
   <hr>
   <div class="row">
-    <div class="col-md-10">
+
 
       <% @orders.each do |order| %>
-      <p>
-      <%= link_to "Order No.#{order.id}", meow_order_path(order) %>
-      </p>
-      <p><%= order.orderstatus %></p>
-      <p>Amount Paid: SGD$<%= order.total_price %></p>
-      <%= order.line_items.count %>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-9">
+              <h1><%= link_to "Order No.#{order.id}", meow_order_path(order) %></h1>
+            </div>
+            <div class="col-md-3">
+              <h2>SGD $<%= order.total_price %></h2>
+            </div>
+          </div>
+        </div>
+        <div class="panel-footer">
+          <p><%= order.orderstatus %></p>
+          <p>Ordered on <%= order.created_at %></p>
+        </div>
+      </div>
       <% end %>
 
-    </div>
   </div>
 </div>
