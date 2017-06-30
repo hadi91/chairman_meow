@@ -1,3 +1,33 @@
-<h1>Current Order</h1>
+<div class="container">
+  <div class="row">
+    <h1>Order Number #<%= @order.id %></h1>
+    <br>
+  </div>
 
-<%= @order.orderstatus %>
+  <div class="row">
+    <table class="table cartlist-tbl">
+      <tr>
+        <th>Breed</th>
+        <th>Unit Price</th>
+        <th>Total Price</th>
+        <th>Quantity</th>
+      </tr>
+
+      <% @line_items.each do |lineitem| %>
+      <tr>
+        <td><%= lineitem.product.breed %></td>
+        <td><%= lineitem.product.price %></td>
+        <td></td>
+        <td><%= lineitem.quantity %></td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+
+  <hr>
+  <div class="row">
+    <div class="col-md-3 col-md-offset-9">
+      <h3>Total: SGD $<%= @order.total_price %></h3>
+    </div>
+  </div>
+</div>
