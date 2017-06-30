@@ -1,0 +1,17 @@
+<<<<<<< HEAD
+<h1><%= 'Your Order for Cat Breed:' + @product_breed %></h1>
+=======
+<h1><%= 'Your Order for Cat Breed:' + @order.line_items.find_by(order_id: @order.id).product.breed %></h1>
+>>>>>>> e7faf76309b6a9f0a96e91d82eea4466089b60b9
+
+<p>Dear Beloved Cat Lover,</p>
+<br>
+<p>Congratulations! Your order has been successfully placed. We will update you again once the order status has been updated</p>
+
+<p>
+  To view or keep track of your order, please visit the product's order page at: <%= link_to "Chairman Meow Orders", meow_orders_url %>
+</p>
+<br>
+
+<p>Regards,</p>
+<p>Chairman Meow</p>

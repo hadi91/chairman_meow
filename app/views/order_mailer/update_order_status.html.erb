@@ -1,11 +1,12 @@
-<h1><%= 'Order Status for Item #{}' %></h1>
+
+<h1><%= 'Order Status for Cat Breed:' + @product_breed %></h1>
 
 <p>Dear Beloved Cat Lover,</p>
 <br>
-<p><%= 'We would like to inform you that your order is now #{}'%></p>
+<p><%= 'We would like to inform you that your order is now ' + @order.orderstatus + '.'%></p>
 
 <p>
-  To view your order, please visit the order page at:
+  To view your order, please visit the order page at: <%= link_to "Chairman Meow Orders", meow_orders_url %>
 </p>
 <br>
 
